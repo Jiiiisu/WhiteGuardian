@@ -1,0 +1,643 @@
+div{
+    display: block;
+}
+
+.window{
+    background-color: black;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    display: flex;
+}
+
+.main-board{
+    background-color: #f7f6f9;
+    width: 1440px;
+    height: 1024px;
+    position: relative;
+}
+
+
+.main-board .rectangle {
+    position: absolute;
+    width: 1125px;
+    height: 96px;
+    top: 0;
+    left: 315px;
+    background-color: #ffffff;
+}
+.main-board .side-menuBar{
+    position: absolute;
+    width: 315px;
+    height: 1024px;
+    background-color: #ffffff;
+    overflow: hidden
+}
+.main-board .img{
+    width: 24px;
+    height: 24px;
+}
+.main-board .text-wrapper{
+    width: 110px;
+    font-family: "Noto Sans-Regular", Helvetica;
+    color: #84828A;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.16px;
+}
+.main-board .program-manage{
+    display: inline-flex;
+    background-color: #ffeefc;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 110px 10px 20px;
+    position: absolute;
+    top: 150px;
+    left: 15px;
+    border-radius: 8px;
+}
+
+.main-board .security-record{
+    display: inline-flex;
+    align-items: center;
+    background-color: #ffeefc;
+    gap: 10px;
+    padding: 10px 110px 10px 20px;
+    position: absolute;
+    top: 218px;
+    left: 15px;
+
+    border-radius: 8px;
+}
+
+.main-board .settings{
+    display: inline-flex;
+    align-items: center;
+    background-color: #ffeefc;
+    gap: 10px;
+    padding: 10px 110px 10px 20px;
+    position: absolute;
+    top: 286px;
+    left: 15px;
+    border-radius: 8px;
+}
+
+.main-board .settings-detail{
+    top: 354px;
+    left: 15px;
+    padding: 16px 68px 16px 16px; 
+    position: absolute;
+    background: #FFEEFC; 
+    box-shadow: 10px 10px 80px rgba(62.55, 38.57, 101.68, 0.10); 
+    border-radius: 24px; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: flex-start; 
+    gap: 16px; 
+    display: inline-flex;
+
+}
+
+
+
+.main-board .logOut{
+    display: inline-flex;
+    align-items: center;
+    background-color: #ffeefc;
+    gap: 10px;
+    padding: 10px 110px 10px 20px;
+    position: absolute;
+    top: 529px;
+    left: 15px;
+    border-radius: 8px;
+}
+
+.main-board .program-name{
+    position: absolute;
+    width: 224px;
+    top: 34px;
+    left: 28px;
+    font-family: "Arial-Bold", Helvetica;
+    font-weight: 700;
+    color: #2c2c2c;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: 30px;
+    white-space: nowrap;
+}
+
+
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------- */
+
+.totalframe1{
+    width: 100%;
+    height: 100%; 
+    background: white; 
+    justify-content: center; 
+    align-items: center; 
+    display: inline-flex;
+}
+
+.loginFrame{
+    align-self: stretch; 
+    padding-top: 39px; 
+    padding-bottom: 39px; 
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: center; 
+    gap: 34px; 
+    display: inline-flex;
+}
+
+.logo{
+    padding-left: 10px; 
+    padding-right: 10px; 
+    padding-top: 28px; 
+    padding-bottom: 28px; 
+    justify-content: flex-start; 
+    align-items: center; 
+    gap: 10px; 
+    display: inline-flex
+}
+
+.titleFrame{
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: flex-start; 
+    gap: 8px; 
+    display: flex;
+}
+
+.idFrame{
+    align-self: stretch; 
+    height: 87px; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: flex-start; 
+    gap: 15px; 
+    display: flex;
+}
+
+.inputBlock{
+    align-self: stretch; 
+    padding-top: 14px; 
+    padding-bottom: 14px;
+    border-radius: 8px; 
+    overflow: hidden;
+    border: 0.50px #84828A solid; 
+    justify-content: flex-start; 
+    align-items: center; 
+    display: inline-flex;
+}
+
+.inputFrame{
+    flex: 1 1 0; 
+    height: 24px; 
+    padding-left: 10px; 
+    padding-right: 10px; 
+    justify-content: space-between; 
+    align-items: center; 
+    display: flex;
+}
+
+.inputText{
+    justify-content: flex-start; 
+    align-items: center; 
+    gap: 10px; 
+    display: flex;
+}
+
+.inputIcon{
+    height: 24px; 
+    justify-content: space-between; 
+    align-items: center; 
+    gap: 10px; 
+    display: flex;
+}
+
+.xIcon{
+    width: 24px; 
+    height: 24px; 
+    padding-top: 3px; 
+    padding-bottom: 2.50px; 
+    padding-left: 3px; 
+    padding-right: 2.50px; 
+    justify-content: center; 
+    align-items: center; 
+    display: flex;
+}
+
+.hideIcon{
+    width: 24px; 
+    height: 24px; 
+    padding-top: 4.25px;
+    padding-bottom: 3.98px; 
+    padding-left: 2.75px; 
+    padding-right: 2.75px; 
+    justify-content: center; 
+    align-items: center; 
+    display: flex;
+}
+
+.pwdFrame{
+    align-self: stretch; 
+    height: 96px; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: flex-start; 
+    gap: 15px; 
+    display: flex;
+}
+
+.extraFrame{
+    align-self: stretch; 
+    justify-content: space-between; 
+    align-items: center; 
+    gap: 200px; 
+    display: inline-flex;
+}
+
+.extraBlock{
+    justify-content: flex-start; 
+    align-items: center; 
+    gap: 8px; 
+    display: flex;
+}
+
+.saveIdIcon{
+    width: 16px; 
+    height: 16px; 
+    position: relative; 
+    border-radius: 4px; 
+    border: 0.50px #2C2C2C solid;
+}
+
+.extraText{
+    color: #344054; 
+    font-size: 20px; 
+    font-family: Inter; 
+    font-weight: 500; 
+    line-height: 20px; 
+    word-wrap: break-word;
+}
+
+.findPwd{
+    color: #C234CE; 
+    font-size: 20px; 
+    font-family: Inter; 
+    font-weight: 400; 
+    line-height: 20px; 
+    word-wrap: break-word;
+}
+
+.buttonFrame{
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: flex-start; 
+    gap: 17px; 
+    display: flex;
+}
+
+.loginBlock{
+    width: 654px; 
+    height: 60px; 
+    padding-left: 90px; 
+    padding-right: 90px; 
+    padding-top: 10px; 
+    padding-bottom: 10px; 
+    background: #FFC8F5; 
+    border-radius: 8px; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px; 
+    display: flex;
+}
+
+.googleLoginBlock{
+    width: 654px; 
+    height: 59.78px; 
+    padding-left: 90px; 
+    padding-right: 90px; 
+    padding-top: 10px; 
+    padding-bottom: 10px; 
+    border-radius: 8px; 
+    border: 0.50px #D0D5DD solid; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px; 
+    display: flex;
+}
+
+.loginTextFrame{
+    justify-content: flex-start; 
+    align-items: center; 
+    gap: 8px; 
+    display: inline-flex;
+}
+
+.loginText{
+    color: white; 
+    font-size: 20px; 
+    font-family: Inter; 
+    font-weight: 700; 
+    line-height: 20px; 
+    word-wrap: break-word;
+}
+
+.signFrmae{
+    padding-left: 7px; 
+    padding-right: 7px; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px; 
+    display: inline-flex;
+}
+
+.signText{
+    color: #C234CE; 
+    font-size: 20px; 
+    font-family: Inter; 
+    font-weight: 600; 
+    line-height: 20px; 
+    word-wrap: break-word;
+}
+
+/* White Guardian */
+.title{
+    width: 378px;
+    text-align: center;
+    color: #344054;
+    font-size: 40px;
+    font-family: Inter;
+    font-weight: 700;
+    text-transform: capitalize;
+    letter-spacing: 0.40px;
+    word-wrap: break-word;
+    
+}
+
+
+/* 아이디비번타이틀txt */
+.idpwd{
+    width: 200px;
+    color: #344054;
+    font-size: 24px;
+    font-family: Inter;
+    font-weight: 600;
+    line-height: 20px;
+    word-wrap: break-word;
+}
+
+
+/* 아이디비번입력내용txt */
+.enter{
+    color: #667085;
+    font-size: 18px;
+    font-family: Inter;
+    font-weight: 400;
+    line-height: 24px;
+    word-wrap: break-word;
+}
+
+/* --------------------------------------------------------------------------------------------------------------------------------------------- */
+
+.totalframe2{
+    width: 100%; 
+    height: 100%; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    align-items: flex-end; 
+    gap: 12px; 
+    display: inline-flex;
+}
+
+
+
+.aiblock{
+    width: 155px; height: 40px;
+    padding-left: 16px; 
+    padding-right: 16px; 
+    padding-top: 8px; 
+    padding-bottom: 8px; 
+    background: white; 
+    border-radius: 8px; 
+    border: 0.50px #949CB0 solid;
+    justify-content: center;
+    align-items: center; 
+    gap: 16px; 
+    display: inline-flex;
+}
+
+
+
+.aiMiniFrame{
+    flex: 1 1 0; 
+    align-self: stretch; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px; 
+    display: flex;
+}
+
+
+.aiIconFrame{
+    width: 24px; 
+    height: 24px; 
+    position: relative;
+}
+
+.aiTextFrame{
+    justify-content: flex-start; 
+    align-items: center; 
+    gap: 10px; 
+    display: flex;
+}
+
+.rectangleFrame{
+    width: 465px; 
+    height: 707px; 
+    background: white; 
+    border: 0.50px #0C51C8 solid; 
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: flex-start; 
+    display: flex;
+}
+
+.listbarFrame{
+    align-self: stretch; 
+    padding-left: 20px; 
+    justify-content: space-between; 
+    align-items: center; 
+    gap: 28px; 
+    display: inline-flex;
+}
+
+.listTextFrame{
+    width: 146px; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px; 
+    display: flex;
+}
+
+.listGraFrame{
+    height: 55px; 
+    border-radius: 8px; 
+    justify-content: flex-end; 
+    align-items: center; 
+    display: flex;
+}
+
+.line{
+    width: 435px; 
+    height: 1px; 
+    background: #EBEFF2;
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: flex-start; 
+    display: flex;
+}
+
+
+
+
+.listFrame{
+    align-self: stretch; 
+    flex: 1 1 0; 
+    padding-top: 10px; 
+    padding-bottom: 20px; 
+    padding-left: 15px; 
+    padding-right: 15px; 
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: flex-start; 
+    gap: 10px; 
+    display: flex;
+}
+
+.listBlockFrame{
+    align-self: stretch; 
+    padding-left: 20px; 
+    padding-right: 20px; 
+    justify-content: space-between; 
+    align-items: center; 
+    display: inline-flex;
+}
+
+
+.exeNameFrame{
+    height: 50px; 
+    padding-top: 11px; 
+    padding-bottom: 11px; 
+    justify-content: flex-start; 
+    align-items: center; 
+    gap: 20px; 
+    display: flex;
+}
+
+.exeIconFrame{
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: flex-start; 
+    display: inline-flex;
+}
+
+.deleteIcon{
+    transform: rotate(180deg); 
+    transform-origin: 0 0; 
+    justify-content: flex-start; 
+    align-items: center; 
+    display: flex;
+    width: 13px; 
+    height: 13px;
+}
+
+.addExeFrame{
+    align-self: stretch; 
+    padding-left: 20px; 
+    padding-right: 20px; 
+    padding-top: 11px; 
+    padding-bottom: 11px; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 20px; 
+    display: inline-flex;
+}
+
+.addExeMiniFrame{
+    width: 435px; 
+    align-self: stretch; 
+    padding-left: 20px; 
+    padding-right: 20px; 
+    justify-content: center; 
+    align-items: center; 
+    display: flex;
+}
+
+
+.addIconFrame{
+    height: 30px; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px; 
+    display: flex;
+}
+
+.addTextFrame{
+    width: 30px; 
+    height: 30px; 
+    justify-content: center; 
+    align-items: center; 
+    display: flex; 
+    width: 30px; 
+    opacity: 0.50; 
+    text-align: center; 
+    color: #334D6E; 
+    font-size: 24px; 
+    font-family: Poppins; 
+    font-weight: 500; 
+    letter-spacing: 0.24px; 
+    word-wrap: break-word;
+}
+
+
+/* AI맞춤모드txt */
+.aitext{
+    color: black;
+    font-size: 16px;
+    font-family: Noto Sans;
+    font-weight: 500;
+    line-height: 24px;
+    word-wrap: break-word;
+}
+
+
+
+/* 파일이름txt */
+.filetext{
+    height: 20px; justify-content: flex-start; align-items: center; gap: 6px; display: flex;
+    color: #2C2C2C;
+    font-size: 20px;
+    font-family: Noto Sans;
+    font-weight: 400;
+    word-wrap: break-word
+}
+
+
+ /* 접근 허용 목록txt */
+.accesstext{
+    
+    color: #0C51C8;
+    font-size: 18px;
+    font-family: Noto Sans;
+    font-weight: 600;
+    word-wrap: break-word;
+}
+
+
