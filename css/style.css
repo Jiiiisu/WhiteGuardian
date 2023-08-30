@@ -1,0 +1,137 @@
+div{
+    display: block;
+}
+.window{
+    background-color: black;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    display: flex;
+}
+
+/* 프로그램 화면 */
+.main-board{
+    background-color: #f7f6f9;
+    width: 1440px;
+    height: 1024px;
+    position: relative;
+}
+
+.main-board .rectangle {
+    position: absolute;
+    width: 1125px;
+    height: 96px;
+    top: 0;
+    left: 315px;
+    background-color: #ffffff;
+}
+
+/* 사이드 메뉴바 */
+.main-board #side-menuBar{
+    position: absolute;
+    width: 315px;
+    height: 1024px;
+    background-color: #ffffff;
+    overflow: hidden
+}
+
+/* 사이드 메뉴바 아이콘 이미지 */
+.main-board .img{
+    width: 24px;
+    height: 24px;
+}
+
+.main-board .text-wrapper{
+    width: 110px;
+    font-family: "Noto Sans-Regular", Helvetica;
+    color: #84828A;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.16px;
+}
+
+.main-board .program-manage{
+    display: inline-flex;
+    align-items: center;
+    background-color: #ffeefc;
+    gap: 10px;
+    padding: 10px 110px 10px 20px;
+    position: absolute;
+    top: 150px;
+    left: 15px;
+    border-radius: 8px;
+}
+
+.main-board .security-record{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 110px 10px 20px;
+    position: absolute;
+    top: 218px;
+    left: 15px;
+
+    border-radius: 8px;
+}
+
+.main-board .settings{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 110px 10px 20px;
+    position: absolute;
+    top: 286px;
+    left: 15px;
+    border-radius: 8px;
+}
+
+.main-board .logOut{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 110px 10px 20px;
+    position: absolute;
+    top: 354px;
+    left: 15px;
+    border-radius: 8px;
+}
+
+/* 화이트 가디언 프로그램 이름 */
+.main-board .program-name{
+    position: absolute;
+    width: 224px;
+    top: 34px;
+    left: 28px;
+    font-family: "Arial-Bold", Helvetica;
+    font-weight: 700;
+    color: #2c2c2c;
+    font-size: 24px;
+    letter-spacing: 0;
+    line-height: 30px;
+    white-space: nowrap;
+}
+
+/* 프로그램 메인 화면 */
+.main-board #main-content{
+    position: absolute;
+    width: 1125px;
+    height: 924px;
+    top: 100px;
+    left: 315px;
+}
+
+#main-content .content-title{
+    position: absolute;
+    width: 305px;
+    top: 70px;
+    left: 70px;
+    font-family: "Noto Sans-DisplaySemiBold", Helvetica;
+    font-weight: 600;
+    color: #2c2c2c;
+    font-size: 24px;
+    letter-spacing: -0.24px;
+    line-height: normal;
+    white-space: nowrap;
+}
