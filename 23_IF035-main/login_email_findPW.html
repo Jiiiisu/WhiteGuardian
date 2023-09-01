@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/frame.css">
+    <link rel="stylesheet" href="./js/active.js">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="window">
+        <div class="main-board">
+            <div class="totalframe1">
+                <div class="loginFrame">
+
+
+                    <div class="logo">
+                        <img style="width: 246px; height: 256px" src="./images/ghost.png" />
+                    </div>
+
+
+                    <div class="titleFrame">
+                        <div class="title">White Guardian</div>
+                    </div>
+
+                    
+                    <div class="idFrame">
+                        <div class="idpwd">아이디</div>
+                        <div class="inputBlock">
+                            <div class="inputFrame">
+                                <div class="inputText">
+                                    <input type="text" placeholder="Enter ID" name="userID" id="userID" required>
+                                </div>
+                                <div class="inputIcon">
+                                    <div class="xIcon">
+                                        <img style="width: 18.50px; height: 18.50px; position: relative" src="./images/X.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="pwdFrame">
+                        <div class="idpwd">이메일</div>
+                        <div class="inputBlock">
+                            <div class="inputFrame">
+                                <div class="inputText">
+                                    <input type="text" placeholder="Enter Email" name="email" id="email" required>
+                                </div>
+                                <div class="inputIcon">
+                                    <div class="hideIcon">
+                                        <img style="width: 18.50px; height: 15.77px; position: relative" src="./images/Hide.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="buttonFrame">
+                        <div class="loginBlock">
+                            <div class="loginTextFrame">
+                                <button type="button" id="submitData" class="registerBtn">비밀번호 찾기</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+    <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-auth.js";
+    import { getDatabase, set, ref, update, query, orderByChild, equalTo, get } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-database.js";
+
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDfNDLlBHpMxsX7fW2QB7z6Y4ZFDSNlV8U",
+      authDomain: "authentication-e7daf.firebaseapp.com",
+      projectId: "authentication-e7daf",
+      storageBucket: "authentication-e7daf.appspot.com",
+      messagingSenderId: "498440575469",
+      appId: "1:498440575469:web:fc07fed83dba86f14e2fe4"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const database = getDatabase(app);
+
+    submitData.addEventListener('click', async (e) => {
+        e.preventDefault(); // 폼 제출 시 페이지 리로딩 방지
+        var id = document.getElementById('userID').value;
+        var email = document.getElementById('email').value;
+
+        try {
+            const userRef = ref(database, 'users/' + id);
+            const snapshot = await get(userRef);
+
+            if (snapshot.exists()) {
+                const userData = snapshot.val();
+                const email = userData.email;
+                const password = userData.password;
+
+                console.log('사용자 비밀번호:', password);
+                alert('사용자 비밀번호.'+password);
+            } else {
+                console.log('해당 ID에 대한 사용자가 없습니다.');
+                alert('해당 ID에 대한 사용자가 없습니다.');
+            }
+        } catch (error) {
+            console.error('오류 발생:', error);
+            alert('오류 발생: ' + error.message);
+        }
+    });
+
+  </script>
