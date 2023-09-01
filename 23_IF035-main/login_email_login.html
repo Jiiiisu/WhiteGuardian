@@ -26,12 +26,11 @@
 
                     
                     <div class="idFrame">
-                        <div class="idpwd">이메일</div>
+                        <div class="idpwd">아이디</div>
                         <div class="inputBlock">
                             <div class="inputFrame">
                                 <div class="inputText">
-                                    <input type="text" placeholder="Enter email" name="email" id="email" required>
-                                    <!-- <div class="enter">Whiteguardian</div> -->
+                                    <input type="text" placeholder="Enter ID" name="userID" id="userID" required>
                                 </div>
                                 <div class="inputIcon">
                                     <div class="xIcon">
@@ -49,7 +48,6 @@
                             <div class="inputFrame">
                                 <div class="inputText">
                                     <input type="password" placeholder="Password" name="psw" id="psw" required>
-                                    <!-- <div class="enter">••••••••</div> -->
                                 </div>
                                 <div class="inputIcon">
                                     <div class="hideIcon">
@@ -79,21 +77,19 @@
                                 <!-- <div class="loginText">로그인</div> -->
                             </div>
                         </div>
-                        <!-- <div class="googleLoginBlock">
+                        <div class="googleLoginBlock">
                             <div class="loginTextFrame">
                                 <img style="width: 24px; height: 24px; position: relative" src="./images/Google.png" alt="">
                                 <div class="extraText">구글로 로그인하기</div>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
 
-
-                    <!-- <div class="signFrame">
+                    <div class="signFrame">
                         <div style="text-align: center">
                             <span class="extraText">계정이 없다면? </span><span class="signText">회원가입</span>
                         </div>
-                    </div> -->
-
+                    </div>
                     
                 </div>
             </div>
@@ -106,7 +102,7 @@
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-app.js";
     import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-auth.js";
-    import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-database.js";
+    import { getDatabase, set, ref, update, query, orderByChild, equalTo, get } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-database.js";
 
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
@@ -126,9 +122,38 @@
     const auth = getAuth(app);
     const database = getDatabase(app);
 
-    submitData.addEventListener('click', (e) => {
-        var email = document.getElementById('email').value;
+    submitData.addEventListener('click', async (e) => {
+        e.preventDefault(); // 폼 제출 시 페이지 리로딩 방지
         var password = document.getElementById('psw').value;
+        var id = document.getElementById('userID').value;
+
+        try {
+            const userRef = ref(database, 'users/' + id);
+            const snapshot = await get(userRef);
+
+            if (snapshot.exists()) {
+                const userData = snapshot.val();
+                const email = userData.email;
+                console.log('사용자 이메일:', email);
+
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+
+                var lgDate = new Date();
+                await update(ref(database, 'users/' + id), {
+                    uid: user.uid,
+                    last_login: lgDate
+                });
+
+                alert('사용자가 성공적으로 로그인했습니다.'+email);
+            } else {
+                console.log('해당 ID에 대한 사용자가 없습니다.');
+                alert('해당 ID에 대한 사용자가 없습니다.');
+            }
+        } catch (error) {
+            console.error('오류 발생:', error);
+            alert('오류 발생: ' + error.message);
+        }
 
         signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
@@ -137,8 +162,8 @@
             // ...
             var lgDate = new Date();
             update(ref(database, 'users/' + user.uid), {
+                uid: user.uid,
                 last_login: lgDate,
-                // id : id
             })
             .then(() => {
             // Data successfully!
