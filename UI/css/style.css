@@ -56,16 +56,18 @@ div{
     display: inline-flex;
     align-items: center;
     background-color: #ffeefc;
+    height: 36px;
     gap: 10px;
     padding: 10px 110px 10px 20px;
     position: absolute;
-    top: 150px;
+    top: 138px;
     left: 15px;
     border-radius: 8px;
 }
 
 .main-board .security-record{
     display: inline-flex;
+    height: 56px;
     align-items: center;
     gap: 10px;
     padding: 10px 110px 10px 20px;
@@ -79,21 +81,23 @@ div{
 .main-board .settings{
     display: inline-flex;
     align-items: center;
+    height: 56px;
     gap: 10px;
     padding: 10px 110px 10px 20px;
     position: absolute;
-    top: 286px;
+    top: 298px;
     left: 15px;
     border-radius: 8px;
 }
 
 .main-board .logOut{
     display: inline-flex;
+    height: 56px;
     align-items: center;
     gap: 10px;
     padding: 10px 110px 10px 20px;
     position: absolute;
-    top: 354px;
+    top: 378px;
     left: 15px;
     border-radius: 8px;
 }
