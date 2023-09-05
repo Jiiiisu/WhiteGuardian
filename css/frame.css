@@ -87,7 +87,10 @@ div{
 .main-board .settings-detail{
     top: 354px;
     left: 15px;
+<<<<<<< HEAD
     padding: 16px 83px 16px 16px; 
+=======
+
     position: absolute;
     background: #FFEEFC; 
     box-shadow: 10px 10px 80px rgba(62.55, 38.57, 101.68, 0.10); 
@@ -100,6 +103,7 @@ div{
 
 }
 
+<<<<<<< HEAD
 .side-menuBar .detailFrame{
     width: 174px; height: 29px; justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex;
 }
@@ -115,6 +119,7 @@ div{
 .side-menuBar .arrow{
     width: 20px; height: 20px; position: relative; border: 0.50px #FFEEFC solid;
 }
+
 
 .main-board .logOut{
     display: inline-flex;
@@ -654,6 +659,7 @@ div{
     word-wrap: break-word;
 }
 
+<<<<<<< HEAD
 /* ------------------------------------------------------------------------------------------------------------------------------------------- */
 
 
@@ -899,4 +905,5 @@ div{
 .changeBtnText{
     color: white; font-size: 20px; font-family: Berlin Sans FB Demi; font-weight: 700; line-height: 21px; word-wrap: break-word;
 }
+
 
