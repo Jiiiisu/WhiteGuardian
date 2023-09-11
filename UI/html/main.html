@@ -5,12 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
     <link rel="stylesheet" href="../css/style.css" />
     <link rel="stylesheet" href="../css/frame3_style.css">
     <link rel="stylesheet" href="../css/frame2_style.css">
-    
-</head>    
+    <script defer src="../js/frame2.js"></script>
+
+</head>
 <body>
     <div class="window">
         <div class="main-board">
@@ -35,7 +37,8 @@
                 <div class="program-name">WHITE GUARDIAN</div>
             </div>
                
-            <div id="main-content">   
+            <div id="main-content">
+                <div class="start-button" onclick="start(this)">START</div>
                 <div class="instruction">
                     <div class="circle-image"><div class="circle_text">?</div></div>
                 </div>
@@ -45,35 +48,51 @@
                     <img class="program-icon" src="../images/program-icon.png">
                     <div class="notice">관리할 프로그램을 선택하세요</div>
                 </div>
-
-                <div class="program-manage-frame">
+                
+                <div id="program-manage-frame">
                     <div class="program-small-frame">
-                        <img class="img" src="../images/powerpoint.png">
-                        <div class="text-wrapper">
-                            <img class="x_img" src="../images/x.png">
-                            <p class="txt">
-                                <span class="programTxt">파워포인트 <br></span>
-                                <span class="programTxt2">.ppt</span>
-                            </p>
+                        <div class="small-group" onclick="programClick(this)">
+                            <img class="img" src="../images/powerpoint.png">
+                            <div class="programTxt">파워포인트</div>
+                            <div class="programTxt2">.ppt</div>
                         </div>
-                    </div>
-                    <div class="program-line"></div>
-                    <div class="program-small-frame">
-                        <img class="img" src="../images/word.png">
-                        <div class="text-wrapper">
-                            <img class="x_img" src="../images/x.png">
-                            <p class="txt">
-                                <span class="programTxt">워드 <br></span>
-                                <span class="programTxt2">.doc</span>
-                            </p>
-                        </div>
+        
+                        <img class="x_img" src="../images/x.png" onclick="deleteProgram(event)">
                     </div>
 
-                    <div class="program-line"></div>
+                    <div class="program-small-frame">
+                        <div class="small-group" onclick="programClick(this)">
+                            <img class="img" src="../images/word.png">
+                            <div class="programTxt">워드</div>
+                            <div class="programTxt2">.doc</div>
+                        </div>
+        
+                        <img class="x_img" src="../images/x.png" onclick="deleteProgram(event)">
+                    </div>
+
+                    <div class="add-program" onclick="inputExtension()">+</div>
+                </div>
+
+                <div id="totalframe2">
                     
-                    <div class="program-small-frame">
-                        <div class="add-program">+</div>
+                    <div class="aiblock">
+                        <div class="aiMiniFrame">
+                            <img class="aiIconFrame" src="../images/aiGenerate1.png">
+                            <div class="aitext">AI 맞춤 모드</div>
+                        </div>
                     </div>
+            
+                    <div class="rectangleFrame">
+                        
+                        <div class="listbarFrame">
+                            <div class="accesstext">접근 허용 목록</div>
+                            <img class="listGraFrame" src="../images/RectangleGradation.png">
+                        </div>
+                            
+                        <div class="addExeFrame">+</div>
+    
+                    </div>
+
                 </div>
 
             </div>

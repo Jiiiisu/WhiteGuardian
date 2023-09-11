@@ -20,12 +20,9 @@
 
 .record-frame .record-table{
     position: absolute;
-    overflow-y: auto;
-    overflow-x: hidden;
     width: 1020px;
     height: 500px;
     background-color: #ffffff;
-    max-height: 500px;
     top: 114px;
     left: 2px;
     box-shadow: 0px 6px 18px #0000000f;
@@ -198,7 +195,14 @@ input[type="date"]::-webkit-calendar-picker-indicator{
     height: 1px;
     background-color: #ebeff2;
 }
-
+.record-table .record-small-table2{
+    position: absolute;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 1020px;
+    background-color: #ffffff;
+    max-height: 450px;
+}
 .record-small-frame{
     position: relative;
     width: 1010px;

@@ -1,3 +1,20 @@
+#main-content .start-button{
+    display: flex;
+    width: 155px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 8px 16px;
+    position: absolute;
+    top: 31px;
+    right: 41px;
+    border-radius: 8px;
+    border: 1px solid;
+    background-color: white;
+    font-size: 18px;
+}
+
 #main-content .icon-wrapper{
     position: absolute;
     width: 350px;
@@ -36,7 +53,7 @@
 }
 
 /* 확장자 리스트 프레임 */
-#main-content .program-manage-frame{
+#main-content #program-manage-frame{
     width: 463px;
     max-height: 700px; 
     position: absolute;
@@ -48,21 +65,26 @@
     overflow-y: auto;
 }
 
-#main-content .program-manage-frame .program-small-frame{
+#main-content #program-manage-frame .program-small-frame{
     position: relative;
     width: 463px;
     height: 99px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #EBEFF2;
 }
 
-.program-small-frame .click-line{
-    position: absolute;
-    left: 0px;
-    width: 5px;
-    height: 98px;
-    background-color: #c234ce;
-
+.small-group{
+    width: 384px;
+    height: 99px;
 }
-.program-small-frame >.img{
+
+.small-group.on {
+    border-left: 4px solid;
+    border-left-color: #C234CE;
+}
+
+.small-group >.img{
     width: 75px;
     height: 69px;
     top: 0px;
@@ -73,67 +95,54 @@
     object-fit: cover;
 }
 
-.program-small-frame >.text-wrapper{
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    right: 24px;
-    margin: auto;
-    width: 315px;
-    height: 76px;
-}
-
 .program-small-frame .x_img{
     position: absolute;
     top: 0px;
     bottom: 0px;
     margin: auto;
-    right: 10px;
+    right: 40px;
     width: 21px;
     height: 21px;
     object-fit: cover;
 }
 
-.program-small-frame .txt{
+.program-small-frame .small-group .programTxt{
     position: absolute;
+    top: 23px;
+    left: 130px;
     width: auto;
-    height: auto;
-    top: 0;
-    bottom: 0;
-    margin: 10px;
     font-family: "Noto Sans-SemiBold", Helvetica;
-    font-weight: 400;
     color: #2c2c2c;
     font-size: 20px;
     line-height: normal;
-}
-
-.program-small-frame .txt .programTxt{
+    height: 27px;
     font-weight: 800;
 }
 
-.program-small-frame .txt .programTxt2{
+.program-small-frame .small-group .programTxt2{
+    width: auto;
+    height: 20px;
+    position: absolute;
+    left: 130px;
+    bottom: 24px;
     font-family: "Noto Sans-Regular", Helvetica;
     font-size: 18px;
+    font-weight: 400px;
 }
 
-.program-manage-frame .program-line{
+.add-program{
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
     width: 463px;
-    height: 1px;
-    background-color: #EBEFF2;
-}
-
-.program-small-frame .add-program{
-    position: absolute;
-    top: 23px;
-    left: 215px;
+    height: 99px;
     font-family: "Noto Sans-DisplaySemiBold", Helvetica;
     font-weight: 600;
     color: #d0d5dd;
     font-size: 40px;
     letter-spacing: -0.4px;
     line-height: normal;
-    white-space: nowrap;
 }
 
 /* 물음표 설명서 아이콘 */
