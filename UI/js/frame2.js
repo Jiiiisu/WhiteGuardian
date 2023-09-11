@@ -121,6 +121,21 @@ function programClick(obj) {
         .then(response => response.json())
         .then(data => {
             createAccessList(data[programTxt2]);
+
+            // Delete 버튼 클릭 이벤트 핸들링
+            const deleteButtons = document.querySelectorAll('.deleteIcon');
+            deleteButtons.forEach((deleteButton, index) => {
+                deleteButton.addEventListener('click', () => {
+                    // 해당 목록 삭제
+                    data[programTxt2].splice(index, 1);
+                    
+                    // 화면에서 해당 목록 삭제
+                    const listFrame = deleteButton.closest('.listFrame');
+                    listFrame.remove();
+
+                    // JSON 데이터 업데이트 코드 필요 !!
+                });
+            });
         })
         .catch(error => {
             console.error('Error loading List.json:', error);
@@ -163,7 +178,7 @@ function createAccessList(acceptList) {
 
         const filetext = document.createElement('div');
         filetext.classList.add('filetext');
-        filetext.textContent = fileName; // 추출한 파일 이름 사용
+        filetext.textContent = fileName;
         exeNameFrame.appendChild(exeIconFrame);
         exeNameFrame.appendChild(filetext);
 
