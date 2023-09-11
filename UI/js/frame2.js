@@ -140,6 +140,9 @@ function createAccessList(acceptList) {
     
     // Accept 배열을 순회하면서 목록을 생성
     acceptList.forEach(filePath => {
+        // 파일 경로에서 마지막 "\\"까지의 부분 추출
+        const fileName = filePath.split('\\').slice(-1)[0];
+
         const listFrame = document.createElement('div');
         listFrame.classList.add('listFrame');
 
@@ -160,7 +163,7 @@ function createAccessList(acceptList) {
 
         const filetext = document.createElement('div');
         filetext.classList.add('filetext');
-        filetext.textContent = filePath;
+        filetext.textContent = fileName; // 추출한 파일 이름 사용
         exeNameFrame.appendChild(exeIconFrame);
         exeNameFrame.appendChild(filetext);
 
