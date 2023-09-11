@@ -67,6 +67,7 @@ function createSmallFrame(name){
 }
 
 //프로그램 목록에 요소 클릭했을 때 접근 허용 목록 띄우기
+/*
 function programClick(obj){
     var allClass = document.getElementsByClassName("small-group on");
     let count = allClass.length;
@@ -79,6 +80,107 @@ function programClick(obj){
     
     obj.classList.add("on");
     openList.style.display = "inline-flex";
+}
+*/
+
+// List.json 파일의 경로
+const listJsonPath = '../json/List.json';
+
+// 프로그램 목록 클릭 시 호출되는 함수
+function programClick(obj) {
+    var allClass = document.getElementsByClassName("small-group on");
+    let count = allClass.length;
+
+    let openList = document.getElementById("totalframe2");
+    for (let i = 0; i < count; i++) {
+        allClass[i].classList.remove("on");
+        openList.style.display = "none";
+    }
+
+    obj.classList.add("on");
+    
+    // JSON 파일을 불러와서 접근 허용 목록을 생성
+    /*
+    fetch(listJsonPath)
+        .then(response => response.json())
+        .then(data => {
+            createAccessList(data.Accept);
+        })
+        .catch(error => {
+            console.error('Error loading List.json:', error);
+        });
+
+    openList.style.display = "inline-flex";
+    */
+
+    // 클릭한 요소의 programTxt2 값을 읽어옴
+    const programTxt2 = obj.querySelector(".programTxt2").textContent;
+
+    // JSON 파일을 불러와서 programTxt2 값을 키로 사용하여 데이터 찾기
+    fetch(listJsonPath)
+        .then(response => response.json())
+        .then(data => {
+            createAccessList(data[programTxt2]);
+        })
+        .catch(error => {
+            console.error('Error loading List.json:', error);
+        });
+
+    openList.style.display = "inline-flex";
+}
+
+// 접근 허용 목록을 생성하는 함수
+function createAccessList(acceptList) {
+    const accessListContainer = document.getElementById('access-list-container');
+    
+    // 이전 목록 삭제
+    while (accessListContainer.firstChild) {
+        accessListContainer.removeChild(accessListContainer.firstChild);
+    }
+    
+    // Accept 배열을 순회하면서 목록을 생성
+    acceptList.forEach(filePath => {
+        const listFrame = document.createElement('div');
+        listFrame.classList.add('listFrame');
+
+        const listBlockFrame = document.createElement('div');
+        listBlockFrame.classList.add('listBlockFrame');
+
+        const exeNameFrame = document.createElement('div');
+        exeNameFrame.classList.add('exeNameFrame');
+
+        const exeIconFrame = document.createElement('div');
+        exeIconFrame.classList.add('exeIconFrame');
+
+        const iconImg = document.createElement('img');
+        iconImg.style.width = '27px';
+        iconImg.style.height = '28px';
+        iconImg.src = '../images/fileicon.png';
+        exeIconFrame.appendChild(iconImg);
+
+        const filetext = document.createElement('div');
+        filetext.classList.add('filetext');
+        filetext.textContent = filePath;
+        exeNameFrame.appendChild(exeIconFrame);
+        exeNameFrame.appendChild(filetext);
+
+        const deleteIcon = document.createElement('div');
+        deleteIcon.classList.add('deleteIcon');
+
+        const deleteImg = document.createElement('img');
+        deleteImg.src = '../images/delete.png';
+        deleteIcon.appendChild(deleteImg);
+
+        listBlockFrame.appendChild(exeNameFrame);
+        listBlockFrame.appendChild(deleteIcon);
+        listFrame.appendChild(listBlockFrame);
+
+        accessListContainer.appendChild(listFrame);
+
+        const line = document.createElement('div');
+        line.classList.add('line');
+        accessListContainer.appendChild(line);
+    });
 }
 
 // 프로그램 목록 X 버튼 누르면 삭제하기
