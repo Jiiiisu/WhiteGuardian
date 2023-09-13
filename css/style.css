@@ -1,0 +1,24 @@
+
+/* 프로그램 메인 화면 */
+.main-board #main-content{
+    position: absolute;
+    width: 1125px;
+    height: 924px;
+    top: 50px;
+    left: 160px;
+}
+
+#main-content .content-title{
+    position: absolute;
+    width: 305px;
+    top: 70px;
+    left: 70px;
+    font-family: "Noto Sans-DisplaySemiBold", Helvetica;
+    font-weight: 600;
+    color: #2c2c2c;
+    font-size: 24px;
+    letter-spacing: -0.24px;
+    line-height: normal;
+    white-space: nowrap;
+}
+

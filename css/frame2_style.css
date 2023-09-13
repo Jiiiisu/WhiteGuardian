@@ -1,0 +1,179 @@
+#main-content .start-button{
+    display: flex;
+    width: 155px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 8px 16px;
+    position: absolute;
+    top: 31px;
+    right: 41px;
+    border-radius: 8px;
+    border: 1px solid;
+    background-color: white;
+    font-size: 18px;
+}
+
+#main-content .icon-wrapper{
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    top: 286px;
+    right: 132px;
+    left: 640px;
+    bottom: 287px;
+}
+
+#main-content .program-icon{
+    position: absolute;
+    width: 229px;
+    height: 242px;
+    top: 12px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    object-fit: cover;
+}
+
+#main-content .notice{
+    position: absolute;
+    width: 300px;
+    top: 300px;
+    right: 0px;
+    left: 0px;
+    margin: auto;
+    font-family: "Noto Sans-Light", Helvetica;
+    font-weight: 300;
+    color: #2c2c2c;
+    font-size: 24px;
+    letter-spacing: -0.24px;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+/* 확장자 리스트 프레임 */
+#main-content #program-manage-frame{
+    width: 463px;
+    max-height: 700px; 
+    position: absolute;
+    top: 184px;
+    left: 57px;
+    background-color: #ffffff;
+    overflow: hidden;
+    box-shadow: 0px 4px 4px #00000040;
+    overflow-y: auto;
+}
+
+#main-content #program-manage-frame .program-small-frame{
+    position: relative;
+    width: 463px;
+    height: 99px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #EBEFF2;
+}
+
+.small-group{
+    width: 384px;
+    height: 99px;
+}
+
+.small-group.on {
+    border-left: 4px solid;
+    border-left-color: #C234CE;
+}
+
+.small-group >.img{
+    width: 75px;
+    height: 69px;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+    left: 30px;
+    position: absolute;
+    object-fit: cover;
+}
+
+.program-small-frame .x_img{
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+    right: 40px;
+    width: 21px;
+    height: 21px;
+    object-fit: cover;
+}
+
+.program-small-frame .small-group .programTxt{
+    position: absolute;
+    top: 23px;
+    left: 130px;
+    width: auto;
+    font-family: "Noto Sans-SemiBold", Helvetica;
+    color: #2c2c2c;
+    font-size: 20px;
+    line-height: normal;
+    height: 27px;
+    font-weight: 800;
+}
+
+.program-small-frame .small-group .programTxt2{
+    width: auto;
+    height: 20px;
+    position: absolute;
+    left: 130px;
+    bottom: 24px;
+    font-family: "Noto Sans-Regular", Helvetica;
+    font-size: 18px;
+    font-weight: 400px;
+}
+
+.add-program{
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: 463px;
+    height: 99px;
+    font-family: "Noto Sans-DisplaySemiBold", Helvetica;
+    font-weight: 600;
+    color: #d0d5dd;
+    font-size: 40px;
+    letter-spacing: -0.4px;
+    line-height: normal;
+}
+
+/* 물음표 설명서 아이콘 */
+#main-content .instruction{
+    position: absolute;
+    width: 53px;
+    height: 50px;
+    bottom: 25px;
+    right: 20px;
+}
+
+.instruction .circle-image{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 50px;
+    height: 49px;
+    background-color: #494949;
+    border-radius: 25.5px/25px;
+    box-shadow: 0px 4px 4px #00000040;
+}
+
+.circle-image .circle_text{
+    width: 36px;
+    height: 36px;
+    margin: auto;
+    font-family: "Noto Sans-Light", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 30px;
+    text-align: center;
+    letter-spacing: -0.3px;
+    line-height: normal;
+}
