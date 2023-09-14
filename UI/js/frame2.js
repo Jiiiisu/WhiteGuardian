@@ -130,7 +130,7 @@ function programClick(obj) {
                     data[programTxt2].splice(index, 1);
                     
                     // 화면에서 해당 목록 삭제
-                    const listFrame = deleteButton.closest('.listFrame');
+                    const listFrame = deleteButton.closest('.listBlockFrame');
                     listFrame.remove();
 
                     // JSON 데이터 업데이트 코드 필요 !!
@@ -158,46 +158,32 @@ function createAccessList(acceptList) {
         // 파일 경로에서 마지막 "\\"까지의 부분 추출
         const fileName = filePath.split('\\').slice(-1)[0];
 
-        const listFrame = document.createElement('div');
-        listFrame.classList.add('listFrame');
-
         const listBlockFrame = document.createElement('div');
         listBlockFrame.classList.add('listBlockFrame');
 
         const exeNameFrame = document.createElement('div');
         exeNameFrame.classList.add('exeNameFrame');
 
-        const exeIconFrame = document.createElement('div');
-        exeIconFrame.classList.add('exeIconFrame');
-
         const iconImg = document.createElement('img');
         iconImg.style.width = '27px';
         iconImg.style.height = '28px';
         iconImg.src = '../images/fileicon.png';
-        exeIconFrame.appendChild(iconImg);
+        exeNameFrame.appendChild(iconImg);
 
         const filetext = document.createElement('div');
         filetext.classList.add('filetext');
         filetext.textContent = fileName;
-        exeNameFrame.appendChild(exeIconFrame);
         exeNameFrame.appendChild(filetext);
 
-        const deleteIcon = document.createElement('div');
+        const deleteIcon = document.createElement('img');
         deleteIcon.classList.add('deleteIcon');
-
-        const deleteImg = document.createElement('img');
-        deleteImg.src = '../images/delete.png';
-        deleteIcon.appendChild(deleteImg);
+        deleteIcon.src = "../images/delete.png";
 
         listBlockFrame.appendChild(exeNameFrame);
         listBlockFrame.appendChild(deleteIcon);
-        listFrame.appendChild(listBlockFrame);
+    
+        accessListContainer.appendChild(listBlockFrame);
 
-        accessListContainer.appendChild(listFrame);
-
-        const line = document.createElement('div');
-        line.classList.add('line');
-        accessListContainer.appendChild(line);
     });
 }
 

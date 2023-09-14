@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/frame2_style.css">
+    <link rel="stylesheet" href="../css/frame3_style.css" />
+
+
+</head>    
+<body>
+    <div class="window">
+        <div class="main-board">
+            <div class="rectangle"></div>
+            <div id="side-menuBar">
+                <div class="program-manage">
+                    <img class="img" src="../images/menu-symbol1.png">
+                    <div class="text-wrapper">프로그램 관리</div>
+                </div>
+                <div class="security-record">
+                    <img class="img" src="../images/menu-symbol2.png">
+                    <div class="text-wrapper">보안 기록</div>
+                </div>
+                <div class="settings">
+                    <img class="img" src="../images/menu-symbol3.png">
+                    <div class="text-wrapper">설정</div>
+                </div>
+                <div class="logOut">
+                    <img class="img" src="../images/menu-symbol4.png">
+                    <div class="text-wrapper">로그 아웃</div>
+                </div>
+                <div class="program-name">WHITE GUARDIAN</div>
+            </div>
+               
+            <div id="main-content">
+                <div class="start-button">START</div>
+                <div class="instruction">
+                    <div class="circle-image"><div class="circle_text">?</div></div>
+                </div>
+
+                <div class="content-title">화이트리스트 프로그램 관리</div>
+
+                <div id="program-manage-frame">
+
+                    <div class="program-small-frame">
+                        <img class="img" src="../images/powerpoint.png">
+                        <img class="x_img" src="../images/x.png">
+                        <p class="txt">
+                            <span class="programTxt">파워포인트 <br></span>
+                            <span class="programTxt2">.ppt</span>
+                        </p>
+                    </div>
+
+                    <div class="program-small-frame">
+                        <img class="img" src="../images/word.png">
+                        <img class="x_img" src="../images/x.png">
+                        <p class="txt">
+                            <span class="programTxt">워드 <br></span>
+                            <span class="programTxt2">.doc</span>
+                        </p>
+                    </div>
+
+                    <div class="add-program" onclick="inputExtension()">+</div>
+                </div>
+                
+                <div id="totalframe2">
+                    
+                    <div class="aiblock">
+                        <div class="aiMiniFrame">
+                            <img class="aiIconFrame" src="../images/aiGenerate1.png">
+                            <div class="aitext">AI 맞춤 모드</div>
+                        </div>
+                    </div>
+            
+                    <div class="rectangleFrame">
+                        
+                        <div class="listbarFrame">
+                            <div class="accesstext">접근 허용 목록</div>
+                            <img class="listGraFrame" src="../images/RectangleGradation.png">
+                        </div>
+                            
+                        <div class="listBlockFrame">
+                            <div class="exeNameFrame">
+                                <img style="width: 27px; height: 28px" src="../images/fileicon.png" >
+                                <div class="filetext">smartscreen.exe</div>
+                            </div>
+                            <img class="deleteIcon" src="../images/delete.png" />
+                        </div>
+
+
+                        <div class="listBlockFrame">
+                            <div class="exeNameFrame">
+                                <img style="width: 27px; height: 28px" src="../images/fileicon.png" >
+                                <div class="filetext">winword.exe</div>
+                            </div>
+                            <img class="deleteIcon" src="../images/delete.png" />
+                        </div>
+
+                        <div class="listBlockFrame">
+                            <div class="exeNameFrame">
+                                <img style="width: 27px; height: 28px" src="../images/fileicon.png" >
+                                <div class="filetext">explorer.exe</div>
+                            </div>
+                            <img class="deleteIcon" src="../images/delete.png" />
+                        </div>
+
+                        <div class="listBlockFrame">
+                            <div class="exeNameFrame">
+                                <img style="width: 27px; height: 28px" src="../images/chrome.png" >
+                                <div class="filetext">chrome.exe</div>
+                            </div>
+                            <img class="deleteIcon" src="../images/delete.png" />
+                        </div>
+        
+                        <div class="addExeFrame">+</div>
+    
+            
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
