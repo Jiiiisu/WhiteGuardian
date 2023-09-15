@@ -177,3 +177,81 @@
     letter-spacing: -0.3px;
     line-height: normal;
 }
+
+/* 설명서 CSS */
+#instruction-board{
+    display: none;
+    position: absolute;
+    right: 100px;
+    bottom: 100px;
+    width: 1135px;
+    height: 725px;
+    border-radius: 59px;
+    border: 2px solid #84828A;
+    background: #ffffff;
+    z-index: 1;
+
+}
+
+#instruction-board .instruction-title{
+    position: absolute;
+    top: 24px;
+    left: 450px;
+    width: auto;
+    height: 30px;
+    color: #000000;
+    font-family: Noto Sans;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+
+}
+
+#close_instruction{
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 50px;
+    right: 63px;
+}
+
+#next-instruction{
+    width: 20px;
+    height: 30px;
+    position: absolute;
+    bottom: 48px;
+    right: 75px;
+}
+
+#back-instruction{
+    width: 20px;
+    height: 30px;
+    position: absolute;
+    bottom: 48px;
+    right: 119px;
+}
+
+#instruction-img{
+    position: absolute;
+    top: 74px;
+    left: 173px;
+    width: 795px;
+    height: 565px;
+    object-fit: cover;
+}
+.content-wrapper{
+    position: absolute;
+    bottom: 43px;
+    width: 1135px;
+    height: 20px;
+    text-align: center;
+}
+#instruction-content{
+    width: auto;    
+    font-family: "Noto Sans-DisplaySemiBold", Helvetica;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: normal;
+    white-space: nowrap;    
+}

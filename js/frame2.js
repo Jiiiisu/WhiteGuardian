@@ -130,7 +130,7 @@ function programClick(obj) {
                     data[programTxt2].splice(index, 1);
                     
                     // 화면에서 해당 목록 삭제
-                    const listFrame = deleteButton.closest('.listFrame');
+                    const listFrame = deleteButton.closest('.listBlockFrame');
                     listFrame.remove();
 
                     // JSON 데이터 업데이트 코드 필요 !!
@@ -158,46 +158,32 @@ function createAccessList(acceptList) {
         // 파일 경로에서 마지막 "\\"까지의 부분 추출
         const fileName = filePath.split('\\').slice(-1)[0];
 
-        const listFrame = document.createElement('div');
-        listFrame.classList.add('listFrame');
-
         const listBlockFrame = document.createElement('div');
         listBlockFrame.classList.add('listBlockFrame');
 
         const exeNameFrame = document.createElement('div');
         exeNameFrame.classList.add('exeNameFrame');
 
-        const exeIconFrame = document.createElement('div');
-        exeIconFrame.classList.add('exeIconFrame');
-
         const iconImg = document.createElement('img');
         iconImg.style.width = '27px';
         iconImg.style.height = '28px';
         iconImg.src = '../images/fileicon.png';
-        exeIconFrame.appendChild(iconImg);
+        exeNameFrame.appendChild(iconImg);
 
         const filetext = document.createElement('div');
         filetext.classList.add('filetext');
         filetext.textContent = fileName;
-        exeNameFrame.appendChild(exeIconFrame);
         exeNameFrame.appendChild(filetext);
 
-        const deleteIcon = document.createElement('div');
+        const deleteIcon = document.createElement('img');
         deleteIcon.classList.add('deleteIcon');
-
-        const deleteImg = document.createElement('img');
-        deleteImg.src = '../images/delete.png';
-        deleteIcon.appendChild(deleteImg);
+        deleteIcon.src = "../images/delete.png";
 
         listBlockFrame.appendChild(exeNameFrame);
         listBlockFrame.appendChild(deleteIcon);
-        listFrame.appendChild(listBlockFrame);
+    
+        accessListContainer.appendChild(listBlockFrame);
 
-        accessListContainer.appendChild(listFrame);
-
-        const line = document.createElement('div');
-        line.classList.add('line');
-        accessListContainer.appendChild(line);
     });
 }
 
@@ -218,5 +204,76 @@ function start(obj){
     }
     else{
         obj.innerHTML = "START";
+    }
+}
+
+// 설명서 
+function open_instruction(){
+    let count = 1;
+
+    let instruction = document.getElementById("instruction-board");
+    instruction.style.display = "block";
+    
+    let closeButton = document.getElementById("close_instruction");
+    let backButton = document.getElementById("back-instruction");
+    let nextButton = document.getElementById("next-instruction");
+    nextButton.style.display = "block";
+    updateInstruction(count);
+
+    backButton.addEventListener("click",
+        function(){ 
+            if(count > 1){
+                count--;
+            }
+            else{
+                count = 1;
+            }
+            updateInstruction(count);
+        });
+    
+    nextButton.addEventListener("click",
+        function(){ 
+            if(count < 4){
+                count++;
+            }
+            else{
+                count = 4;
+            }
+            updateInstruction(count);
+    });
+    
+    closeButton.addEventListener("click",
+                                function(){ instruction.style.display = "none"; });
+}
+
+function updateInstruction(count) {
+    let instruction_img = document.getElementById("instruction-img");
+    let instruction_content = document.getElementById("instruction-content");
+
+    let backButton = document.getElementById("back-instruction");
+    let nextButton = document.getElementById("next-instruction");
+
+    if (count == 1) {
+        backButton.style.display = "none";
+        instruction_img.src = "./images/instruction1.png";
+        instruction_content.innerText = "1. 좌측의 프로그램 리스트에서 관리할 파일을 선택하세요.";
+    }
+    if (count == 2) {
+        backButton.style.display = "block";
+        nextButton.style.display = "block";
+        instruction_img.setAttribute("src", "./images/instruction2.png");
+        instruction_content.innerText = "2. 만약, doc 파일에 관한 관리 목록을 보고 싶다면 Word 아이콘을 선택합니다.";
+    }
+    if (count == 3) {
+        backButton.style.display = "block";
+        nextButton.style.display = "block";
+        instruction_img.src = "./images/instruction3.png";
+        instruction_content.innerText = "3. 우측에 뜬 접근 허용 목록을 확인하고 추가 및 제거합니다.";
+    }
+    if (count == 4) {
+        nextButton.style.display = "none";
+        backButton.style.display = "block";
+        instruction_img.src = "./images/instruction4.png";
+        instruction_content.innerText = "4. 사용자 맞춤 목록을 원한다면, AI 맞춤 모드를 클릭하세요."
     }
 }

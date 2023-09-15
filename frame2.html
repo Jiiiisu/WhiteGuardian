@@ -17,8 +17,21 @@
     
             <div id="main-content">
                 <div class="start-button" onclick="start(this)">START</div>
+                
                 <div class="instruction">
-                    <div class="circle-image"><div class="circle_text">?</div></div>
+                    <div class="circle-image" onclick="open_instruction()"><div class="circle_text">?</div></div>
+                </div>
+
+                <div id="instruction-board">
+                    <div class="instruction-title">프로그램 관리 설명서</div>
+                    <img id="close_instruction" src="./images/close_instruction.png">
+                    <img id="next-instruction" src="./images/next_instruction.png">
+                    <img id="back-instruction" src="./images/back-instruction.png">
+                    <img id="instruction-img">
+                    <div class="content-wrapper">
+                        <div id="instruction-content"></div>
+                    </div>
+                    
                 </div>
 
                 <div class="content-title">화이트리스트 프로그램 관리</div>
