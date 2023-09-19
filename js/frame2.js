@@ -1,3 +1,8 @@
+let selectedProgramTxt2;
+
+// List.json 파일의 경로
+const listJsonPath = '../json/List.json';
+
 // 확장자 종류에 맞는 아이콘과 프로그램 이름 모아두기
 var programData = {
     "extensionType": [".ppt", ".doc"],
@@ -24,6 +29,32 @@ function inputExtension(){
             console.log("없어요");
             ret = null;
         }
+    }
+}
+
+// + 버튼 눌렀을때 뜨는 프롬프트 상자 - 접근 허용 목록
+function inputProgramPath(){
+    let newData = prompt("허용할 프로그램의 경로를 입력하세요.");
+    
+    if(newData != null && newData != ""){
+        fetch(listJsonPath)
+        .then(response => response.json())
+        .then(data => {
+            if (data.hasOwnProperty(selectedProgramTxt2)) {
+            if (Array.isArray(data[selectedProgramTxt2])) {
+                data[selectedProgramTxt2].push(newData);
+            } else {
+                data[selectedProgramTxt2] = [data[selectedProgramTxt2], newData];
+            }
+            } else {
+            data[selectedProgramTxt2] = newData;
+            }
+            // 변경된 JSON 데이터를 다시 파일로 저장, 화면에 목록으로 생성 필요 !!
+        })
+        .catch(error => {
+            console.error('[inputProgramPath] load json fail: ', error);
+        });
+        newData = null;
     }
 }
 
@@ -83,9 +114,6 @@ function programClick(obj){
 }
 */
 
-// List.json 파일의 경로
-const listJsonPath = '../json/List.json';
-
 // 프로그램 목록 클릭 시 호출되는 함수
 function programClick(obj) {
     var allClass = document.getElementsByClassName("small-group on");
@@ -114,20 +142,20 @@ function programClick(obj) {
     */
 
     // 클릭한 요소의 programTxt2 값을 읽어옴
-    const programTxt2 = obj.querySelector(".programTxt2").textContent;
+    selectedProgramTxt2 = obj.querySelector(".programTxt2").textContent;
 
     // JSON 파일을 불러와서 programTxt2 값을 키로 사용하여 데이터 찾기
     fetch(listJsonPath)
         .then(response => response.json())
         .then(data => {
-            createAccessList(data[programTxt2]);
+            createAccessList(data[selectedProgramTxt2]);
 
             // Delete 버튼 클릭 이벤트 핸들링
             const deleteButtons = document.querySelectorAll('.deleteIcon');
             deleteButtons.forEach((deleteButton, index) => {
                 deleteButton.addEventListener('click', () => {
                     // 해당 목록 삭제
-                    data[programTxt2].splice(index, 1);
+                    data[selectedProgramTxt2].splice(index, 1);
                     
                     // 화면에서 해당 목록 삭제
                     const listFrame = deleteButton.closest('.listBlockFrame');
@@ -138,7 +166,7 @@ function programClick(obj) {
             });
         })
         .catch(error => {
-            console.error('Error loading List.json:', error);
+            console.error('[programClick] load json fail: ', error);
         });
 
     openList.style.display = "inline-flex";
@@ -201,6 +229,7 @@ function deleteProgram(e){
 function start(obj){
     if(obj.innerHTML == "START"){
         obj.innerHTML = "STOP";
+        window.open("Dev://"); // 사전 세팅 안 하면 실행 안 됨 !!
     }
     else{
         obj.innerHTML = "START";
