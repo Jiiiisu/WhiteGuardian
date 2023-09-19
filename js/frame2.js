@@ -1,6 +1,6 @@
 // 확장자 종류에 맞는 아이콘과 프로그램 이름 모아두기
 var programData = {
-    "extensionType": [".ppt", ".doc"],
+    "extensionType": [".ppt", ".doc", ".txt", ".hwp", ".xlxs"],
     
     ".ppt": {
             "Name": "파워포인트",
@@ -9,23 +9,66 @@ var programData = {
     ".doc": {
             "Name": "워드",
             "Icon": "../images/word.png"
+            },
+    ".txt": {
+            "Name": "메모장",
+            "Icon": "../images/textFile.png"
+            },
+    ".hwp": {   
+            "Name": "한컴오피스",
+            "Icon": "../images/hwp.png"
+            },
+    ".xlxs": {
+            "Name": "엑셀",
+            "Icon": "../images/excel.png"
             }
 }
 
-// + 버튼 눌렀을때 뜨는 프롬프트 상자
 function inputExtension(){
-    let ret = prompt("추가할 확장자명을 입력하세요.");
+    const openDialog = document.getElementById("addExtension");
+    const enterButton = document.getElementById("enter");
+    const cancelButton = document.getElementById("cancel");
+    const extensionText = document.getElementById("extensionText");
+
+    openDialog.show();
     
-    if(ret != null && ret != ""){
-        if(programData.extensionType.indexOf(ret) !== -1){
-            createSmallFrame(ret);
+    enterButton.addEventListener("click", () => {
+        var extension = extensionText.value;
+        if(extension != null && extension != ""){
+            if(programData.extensionType.indexOf(extension) !== -1){
+                createSmallFrame(extension);
+                extensionText.value = "";
+                openDialog.close();
+            }  
+            else{
+                console.log("없어요");
+                extension =  null;
+                openDialog.close();
+            }
         }
-        else{
-            console.log("없어요");
-            ret = null;
-        }
-    }
+    });
+
+    cancelButton.addEventListener("click", () => {
+        extensionText.value = "";
+        openDialog.close();
+    })
 }
+
+
+// + 버튼 눌렀을때 뜨는 프롬프트 상자
+// function inputExtension(){
+//     let ret = prompt("추가할 확장자명을 입력하세요.");
+    
+//     if(ret != null && ret != ""){
+//         if(programData.extensionType.indexOf(ret) !== -1){
+//             createSmallFrame(ret);
+//         }
+//         else{
+//             console.log("없어요");
+//             ret = null;
+//         }
+//     }
+// }
 
 // 프로그램 목록(확장자 목록)에 요소 하나 추가
 function createSmallFrame(name){

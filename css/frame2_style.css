@@ -1,3 +1,59 @@
+#addExtension{
+    height: 150px;
+    position: absolute;
+    top: 400px;
+    left: 100px;
+    border: 1px solid #000000;
+    z-index: 0;
+}
+
+#addExtension >h1{
+    font-family: "Noto Sans-Light", Helvetica;
+    font-weight: 300;
+    color: #2c2c2c;
+    font-size: 20px;
+    letter-spacing: -0.24px;
+    line-height: normal;
+    white-space: nowrap;
+}
+
+#extensionText{
+    position: absolute;
+    width: 270px;
+    top: 60px;
+    height: 40px;
+    font-size: 20px;
+    /* border: 1px light #000000; */
+}
+
+.button-wrapper{
+    display: flex;
+    gap: 10px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+
+#cancel{
+    border-radius: 10px;
+    width: 70px;
+    height: 50px;
+    font-size: 16px;
+    background-color: #C234CE;
+    color: white;
+    border: none;
+}
+
+#enter{
+    border-radius: 10px;
+    width: 70px;
+    height: 50px;
+    font-size: 16px;
+    background-color: #C234CE;
+    color: white;
+    border: none;
+}
+
 #main-content .start-button{
     display: flex;
     width: 155px;

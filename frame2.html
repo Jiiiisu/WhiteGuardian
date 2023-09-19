@@ -40,6 +40,7 @@
                     <div class="notice">관리할 프로그램을 선택하세요</div>
                 </div>
                 
+
                 <div id="program-manage-frame">
                     <div class="program-small-frame">
                         <div class="small-group" onclick="programClick(this)">
@@ -90,7 +91,15 @@
 
             </div>
     
-    <script src="./json/List.json" type="text/javascript"></script>
+            <dialog id="addExtension">
+                <h1>추가 할 확장자 명을 입력하세요</h1>
+                <input type="text" id="extensionText">
+                <div class="button-wrapper">
+                    <button id="cancel">취소</button>
+                    <button id="enter">확인</button>
+                </div>
+            </dialog>
+    <!-- <script src="./json/List.json" type="text/javascript"></script> -->
 
 </body>
 </html>
