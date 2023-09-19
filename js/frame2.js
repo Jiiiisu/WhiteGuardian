@@ -1,7 +1,7 @@
 let selectedProgramTxt2;
 
 // List.json 파일의 경로
-const listJsonPath = '../json/List.json';
+const listJsonPath = "C://WRDP_MiniFilter//List.json";
 
 // 확장자 종류에 맞는 아이콘과 프로그램 이름 모아두기
 var programData = {
@@ -9,19 +9,19 @@ var programData = {
     
     ".ppt": {
             "Name": "파워포인트",
-            "Icon": "../images/powerpoint.png"
+            "Icon": "./images/powerpoint.png"
             },
     ".doc": {
             "Name": "워드",
-            "Icon": "../images/word.png"
+            "Icon": "./images/word.png"
             },
     ".txt": {
             "Name": "메모장",
-            "Icon": "../images/textFile.png"
+            "Icon": "./images/textFile.png"
             },
     ".hwp": {   
             "Name": "한컴오피스",
-            "Icon": "../images/hwp.png"
+            "Icon": "./images/hwp.png"
             },
     ".xlxs": {
             "Name": "엑셀",
@@ -239,7 +239,7 @@ function createAccessList(acceptList) {
         const iconImg = document.createElement('img');
         iconImg.style.width = '27px';
         iconImg.style.height = '28px';
-        iconImg.src = '../images/fileicon.png';
+        iconImg.src = './images/fileicon.png';
         exeNameFrame.appendChild(iconImg);
 
         const filetext = document.createElement('div');
@@ -249,7 +249,7 @@ function createAccessList(acceptList) {
 
         const deleteIcon = document.createElement('img');
         deleteIcon.classList.add('deleteIcon');
-        deleteIcon.src = "../images/delete.png";
+        deleteIcon.src = "./images/delete.png";
 
         listBlockFrame.appendChild(exeNameFrame);
         listBlockFrame.appendChild(deleteIcon);
