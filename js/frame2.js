@@ -123,7 +123,7 @@ function createSmallFrame(name){
 
     var img = document.createElement("img");
     img.setAttribute("class", "x_img");
-    img.setAttribute("src", "../images/x_img.png");
+    img.setAttribute("src", "./images/x_img.png");
     img.setAttribute("onclick", "deleteProgram(event)");
     newDiv.appendChild(img);
 
