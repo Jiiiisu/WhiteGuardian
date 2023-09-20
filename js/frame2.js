@@ -3,6 +3,11 @@ let selectedProgramTxt2;
 // List.json 파일의 경로
 const listJsonPath = "C://WRDP_MiniFilter//List.json";
 
+const txt = [];
+const doc = ["C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe", "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Word.exe"];
+const ppt = ["C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\PowerPoint.exe"];
+const none = [];
+
 // 확장자 종류에 맞는 아이콘과 프로그램 이름 모아두기
 var programData = {
     "extensionType": [".ppt", ".doc", ".txt", ".hwp", ".xlxs"],
@@ -200,6 +205,39 @@ function programClick(obj) {
     // 클릭한 요소의 programTxt2 값을 읽어옴
     selectedProgramTxt2 = obj.querySelector(".programTxt2").textContent;
 
+    if (selectedProgramTxt2 == ".doc") {
+        createAccessList(doc);
+        // Delete 버튼 클릭 이벤트 핸들링
+        const deleteButtons = document.querySelectorAll('.deleteIcon');
+        deleteButtons.forEach((deleteButton, index) => {
+            deleteButton.addEventListener('click', () => {
+                // 해당 목록 삭제
+                doc.splice(index, 1);
+                            
+                // 화면에서 해당 목록 삭제
+                const listFrame = deleteButton.closest('.listBlockFrame');
+                listFrame.remove();
+            })
+        });
+    }
+    else if (selectedProgramTxt2 == ".ppt") {
+        createAccessList(ppt);
+        // Delete 버튼 클릭 이벤트 핸들링
+        const deleteButtons = document.querySelectorAll('.deleteIcon');
+        deleteButtons.forEach((deleteButton, index) => {
+            deleteButton.addEventListener('click', () => {
+                // 해당 목록 삭제
+                ppt.splice(index, 1);
+                            
+                // 화면에서 해당 목록 삭제
+                const listFrame = deleteButton.closest('.listBlockFrame');
+                listFrame.remove();
+            })
+        });
+    }
+    else createAccessList(none);
+
+    /*
     // JSON 파일을 불러와서 programTxt2 값을 키로 사용하여 데이터 찾기
     fetch(listJsonPath)
         .then(response => response.json())
@@ -224,6 +262,7 @@ function programClick(obj) {
         .catch(error => {
             console.error('[programClick] load json fail: ', error);
         });
+        */
 
     openList.style.display = "inline-flex";
 }
@@ -285,7 +324,8 @@ function deleteProgram(e){
 function start(obj){
     if(obj.innerHTML == "START"){
         obj.innerHTML = "STOP";
-        window.open("Dev://"); // 사전 세팅 안 하면 실행 안 됨 !!
+        Drv = window.open("Dev://"); // 사전 세팅 안 하면 실행 안 됨 !!
+        Drv.close();
     }
     else{
         obj.innerHTML = "START";
