@@ -88,7 +88,28 @@ function inputProgramPath(){
 
     openDialog.show();
 
+    enterButton.addEventListener("click", () => {
+        var program = ProgramText.value;
+        if(program != null && program != ""){
+            if (selectedProgramTxt2 == ".doc") {
+                doc.push(program);
+                createAccessList(doc);
+            }
+            else if (selectedProgramTxt2 == ".ppt") {
+                ppt.push(program);
+                createAccessList(ppt);
+            }
+            else if (selectedProgramTxt2 == ".txt") {
+                txt.push(program);
+                createAccessList(txt);
+            }
+            ProgramText.value = "";
+            openDialog.close();
+        }
+    });
+
     cancelButton.addEventListener("click", () => {
+        ProgramText.value = "";
         openDialog.close();
     })
 }
@@ -228,6 +249,21 @@ function programClick(obj) {
             deleteButton.addEventListener('click', () => {
                 // 해당 목록 삭제
                 ppt.splice(index, 1);
+                            
+                // 화면에서 해당 목록 삭제
+                const listFrame = deleteButton.closest('.listBlockFrame');
+                listFrame.remove();
+            })
+        });
+    }
+    else if (selectedProgramTxt2 == ".txt") {
+        createAccessList(txt);
+        // Delete 버튼 클릭 이벤트 핸들링
+        const deleteButtons = document.querySelectorAll('.deleteIcon');
+        deleteButtons.forEach((deleteButton, index) => {
+            deleteButton.addEventListener('click', () => {
+                // 해당 목록 삭제
+                txt.splice(index, 1);
                             
                 // 화면에서 해당 목록 삭제
                 const listFrame = deleteButton.closest('.listBlockFrame');
