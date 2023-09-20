@@ -7,7 +7,16 @@
     z-index: 0;
 }
 
-#addExtension >h1{
+#addProgram{
+    height: 150px;
+    position: absolute;
+    top: 400px;
+    left: 100px;
+    border: 1px solid #000000;
+    z-index: 0;
+}
+
+h1{
     font-family: "Noto Sans-Light", Helvetica;
     font-weight: 300;
     color: #2c2c2c;

@@ -25,7 +25,7 @@ var programData = {
             },
     ".xlxs": {
             "Name": "엑셀",
-            "Icon": "../images/excel.png"
+            "Icon": "./images/excel.png"
             }
 }
 
@@ -75,31 +75,39 @@ function inputExtension(){
 //     }
 // }
 
-// + 버튼 눌렀을때 뜨는 프롬프트 상자 - 접근 허용 목록
 function inputProgramPath(){
-    let newData = prompt("허용할 프로그램의 경로를 입력하세요.");
-    
-    if(newData != null && newData != ""){
-        fetch(listJsonPath)
-        .then(response => response.json())
-        .then(data => {
-            if (data.hasOwnProperty(selectedProgramTxt2)) {
-            if (Array.isArray(data[selectedProgramTxt2])) {
-                data[selectedProgramTxt2].push(newData);
-            } else {
-                data[selectedProgramTxt2] = [data[selectedProgramTxt2], newData];
-            }
-            } else {
-            data[selectedProgramTxt2] = newData;
-            }
-            // 변경된 JSON 데이터를 다시 파일로 저장, 화면에 목록으로 생성 필요 !!
-        })
-        .catch(error => {
-            console.error('[inputProgramPath] load json fail: ', error);
-        });
-        newData = null;
-    }
+    const openDialog = document.getElementById("addProgram");
+    const enterButton = document.getElementById("enter");
+    const cancelButton = document.getElementById("cancel");
+    const extensionText = document.getElementById("extensionText");
+
+    openDialog.show();
 }
+// + 버튼 눌렀을때 뜨는 프롬프트 상자 - 접근 허용 목록
+// function inputProgramPath(){
+//     let newData = prompt("허용할 프로그램의 경로를 입력하세요.");
+    
+//     if(newData != null && newData != ""){
+//         fetch(listJsonPath)
+//         .then(response => response.json())
+//         .then(data => {
+//             if (data.hasOwnProperty(selectedProgramTxt2)) {
+//             if (Array.isArray(data[selectedProgramTxt2])) {
+//                 data[selectedProgramTxt2].push(newData);
+//             } else {
+//                 data[selectedProgramTxt2] = [data[selectedProgramTxt2], newData];
+//             }
+//             } else {
+//             data[selectedProgramTxt2] = newData;
+//             }
+//             // 변경된 JSON 데이터를 다시 파일로 저장, 화면에 목록으로 생성 필요 !!
+//         })
+//         .catch(error => {
+//             console.error('[inputProgramPath] load json fail: ', error);
+//         });
+//         newData = null;
+//     }
+// }
 
 
 // 프로그램 목록(확장자 목록)에 요소 하나 추가
