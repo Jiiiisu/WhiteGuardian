@@ -82,6 +82,11 @@ function inputProgramPath(){
     const extensionText = document.getElementById("extensionText");
 
     openDialog.show();
+
+    cancelButton.addEventListener("click", () => {
+        extensionText.value = "";
+        openDialog.close();
+    })
 }
 // + 버튼 눌렀을때 뜨는 프롬프트 상자 - 접근 허용 목록
 // function inputProgramPath(){
