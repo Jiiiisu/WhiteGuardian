@@ -34,7 +34,13 @@ h1{
     font-size: 20px;
     /* border: 1px light #000000; */
 }
-
+#ProgramText{
+    position: absolute;
+    width: 270px;
+    top: 60px;
+    height: 40px;
+    font-size: 20px; 
+}
 .button-wrapper{
     display: flex;
     gap: 10px;
@@ -53,7 +59,27 @@ h1{
     border: none;
 }
 
+#cancel2{
+    border-radius: 10px;
+    width: 70px;
+    height: 50px;
+    font-size: 16px;
+    background-color: #C234CE;
+    color: white;
+    border: none;
+}
+
 #enter{
+    border-radius: 10px;
+    width: 70px;
+    height: 50px;
+    font-size: 16px;
+    background-color: #C234CE;
+    color: white;
+    border: none;
+}
+
+#enter2{
     border-radius: 10px;
     width: 70px;
     height: 50px;

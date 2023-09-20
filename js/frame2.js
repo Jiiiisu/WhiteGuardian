@@ -77,14 +77,13 @@ function inputExtension(){
 
 function inputProgramPath(){
     const openDialog = document.getElementById("addProgram");
-    const enterButton = document.getElementById("enter");
-    const cancelButton = document.getElementById("cancel");
-    const extensionText = document.getElementById("extensionText");
+    const enterButton = document.getElementById("enter2");
+    const cancelButton = document.getElementById("cancel2");
+    const extensionText = document.getElementById("ProgramText");
 
     openDialog.show();
 
     cancelButton.addEventListener("click", () => {
-        extensionText.value = "";
         openDialog.close();
     })
 }
