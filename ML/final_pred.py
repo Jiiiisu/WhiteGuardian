@@ -21,7 +21,6 @@ with open (json_path,'r',encoding='utf-8') as f_json:
 with open(whitelist_path,'r',encoding= 'utf-8') as f_json:
     w_list = json.load(f_json)
 
-
 def predict_program():
     
     # w_ext에 ext가 없는 경우 추가.
