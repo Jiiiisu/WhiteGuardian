@@ -288,8 +288,8 @@ function createAccessList(acceptList) {
         exeNameFrame.classList.add('exeNameFrame');
 
         const iconImg = document.createElement('img');
-        iconImg.style.width = '27px';
-        iconImg.style.height = '28px';
+        iconImg.style.width = '21px';
+        iconImg.style.height = '24px';
         iconImg.src = './images/fileicon.png';
         exeNameFrame.appendChild(iconImg);
 
