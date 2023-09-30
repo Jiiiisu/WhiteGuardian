@@ -1,4 +1,6 @@
-
+body{
+    overflow: hidden;
+}
 /* 프로그램 메인 화면 */
 .main-board #main-content{
     position: absolute;
@@ -20,4 +22,3 @@
     line-height: normal;
     white-space: nowrap;
 }
-

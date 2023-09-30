@@ -1,9 +1,9 @@
 .record-frame{
     position: absolute;
-    width: 1045px;
-    height: 652px;
-    top: 146px;
-    left: 58px;
+    width: 90%;
+    height: 80%;
+    top: 15%;
+    left: 5%;
 }
 
 .record-frame .record-sort{
@@ -12,22 +12,22 @@
     flex-direction: row;
     align-items: flex-start;
     gap: 15px;
-    width: 1022px;
-    height: 80px;
-    top: 8px;
-    left: 2px;
+    width: 100%;
+    height: 30%;
+    top: 3%;
+    left: 3%;
 }
 
 .record-frame .record-table{
     position: absolute;
     overflow-y: auto;
     overflow-x: hidden;
-    width: 1020px;
-    height: 500px;
+    width: 95%;
+    height: 75%;
     background-color: #ffffff;
-    max-height: 500px;
-    top: 114px;
-    left: 2px;
+    max-height: 75%;
+    top: 17%;
+    left: 3%;
     box-shadow: 0px 6px 18px #0000000f;
 }
 
@@ -52,8 +52,8 @@
 
 .record-sort .search{
     position: relative;
-    width: 479px;
-    height: 60px;
+    width: 65%;
+    height: 30%;
     background-color: #ffffff;
     box-shadow: 0px 4px 4px #00000040;
 }
@@ -113,12 +113,12 @@
 
 input[type="date"]{
     position: relative;
-    width: 155px;
-    height: 60px;
-    padding-right: 10px;
-    padding-left: 15px;
+    width: 10%;
+    height: 30%;
+    padding-right: 1.5%;
+    padding-left: 1.5%;
     background: url("./images/arrow-down.png") no-repeat right 15px center;
-    background-size: 21px;
+    background-size: 1em;
     background-color: #ffffff;
     box-shadow: 0px 4px 4px #00000040;
     border: 0;
@@ -126,7 +126,7 @@ input[type="date"]{
     font-family: "Noto Sans-Medium", Helvetica;
     font-weight: 500;
     color: #000000;
-    font-size: 16px;
+    font-size: 0.8em;
     letter-spacing: 0.16px;
     line-height: normal;
 }
@@ -148,20 +148,16 @@ input[type="date"]::-webkit-calendar-picker-indicator{
 
 .record-table .record-small-table1{
     position: relative;
-    width: 1010px;
-    height: 49px;
+    width: 100%;
+    height: 10%;
     background-color: #ffffff;
+    border-bottom: 1px solid #ebeff2;
 }
 
 .record-small-table1 .table1-txt{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin: auto; 
-    width: 100px;
-    height: 20px;
+    padding: 45% 0;
     font-family: Noto Sans;
-    font-size: 15px;
+    font-size: 0.75em;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -172,81 +168,64 @@ input[type="date"]::-webkit-calendar-picker-indicator{
 
 .record-small-table1 .e1{
     position: absolute;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    left: 28px;
+    left: 2%;
 }
 
 .record-small-table1 .e2{
     position: absolute;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    left: 308px;
+    left: 33%;
 }
 
 .record-small-table1 .e3{
     position: absolute;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    left: 459px;
+    left: 45%;
 }
 
 .record-small-table1 .e4{
     position: absolute;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    left: 657px;
-}
-
-.record-line{
-    width: 1010px;
-    height: 1px;
-    background-color: #ebeff2;
+    left: 65%;
 }
 
 .record-small-frame{
     position: relative;
-    width: 1010px;
-    height: 22px;
-    padding: 21px 0;
+    width: 100%;
+    height: 4%;
+    padding: 1.5% 0;
     background-color: #ffffff;
 
     font-family: "Noto Sans-Medium", Helvetica;
     font-weight: 500;
     color: #323C47;
-    font-size: 18px;
+    font-size: 0.8em;
     letter-spacing: 0.16px;
     line-height: normal;
+    border-bottom: 1px solid #ebeff2;
 }
 
 .r-date{
     width: auto;
-    height: 22px;
+    height: 40%;
     position: absolute;
-    left: 28px;
+    left: 2%;
 }
 
 .r-level{
     width: auto;
-    height: 22px;
+    height: 40%;
     position: absolute;
-    left: 308px;
+    left: 33%;
 }
 
 .r-sortation{
     width: auto;
-    height: 22px;
+    height: 40%;
     position: absolute;
-    left: 459px;
+    left: 45%;
 }
 
 .r-content{
     width: auto;
-    height: 22px;
+    height: 40%;
     position: absolute;
-    left: 657px;
+    left: 65%;
 }
