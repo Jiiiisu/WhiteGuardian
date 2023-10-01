@@ -17,6 +17,58 @@ div{
     position: relative;
 }
 
+.container{
+    height: 100%;
+    padding: 0;
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+.title-bar{
+    background: #000000;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #ffffff;
+    font-size: 15px;
+}
+
+.title{
+    height: auto;
+    padding: 10px;
+    display: inline-block;
+}
+
+.prevent-select{
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+}
+  
+.draggable{
+    -webkit-app-region: drag;
+}
+
+.control{
+    float: right;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 20px;
+    margin-right: 30px;
+    width: 100px;
+}
+  
+.control button{
+    padding: 5px 10px;
+    background: #000000;
+    color: #ffffff;
+    outline: 0;
+    border: 0;
+    -webkit-app-region: no-drag;
+}
+  
+.control button:hover{
+    background: #444444
+}
+
 
 .main-board .rectangle {
     position: absolute;
@@ -29,7 +81,8 @@ div{
 .main-board .side-menuBar{
     position: absolute;
     width: 315px;
-    height: 1024px;
+    height: 962px;
+    top: 6%;
     background-color: #ffffff;
     overflow: hidden
 }
@@ -589,7 +642,7 @@ input[type="button"]::-webkit-calendar-picker-indicator{
 
 .exceptionListBox{
     width: 746px; 
-    padding-left: 15px; 
+    padding-left: 37px; 
     padding-right: 15px; 
     justify-content: center; 
     align-items: center; 

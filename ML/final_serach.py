@@ -90,12 +90,14 @@ def sort_two_weeks():
             origin_path = get_target_path(f_path)
             file_ext = os.path.splitext(origin_path)[1]
             origin_prog = get_associated_program_path(file_ext)
-            #print(origin_prog)    
+            print(file_ext) 
+            print(origin_prog) 
+            ''' 
             if origin_prog is not None and origin_prog != "None":
                 f_name = origin_path.split("\\")[-1]
                 ext = "."+f_name.split(".")[-1]
                 file_info[ext] = [origin_prog]
-                
+            '''    
                 
     # 사용자의 홈 디렉토리 경로 얻고, 전체 경로 얻기
     json_path = os.path.join(os.path.expanduser("~"), "Project404")
