@@ -1,10 +1,12 @@
 import os
-import subprocess
-import winreg
-import win32com.client
 import json
 import re
-from datetime import date, datetime, timedelta
+import winreg
+import win32com.client
+from datetime import datetime, timedelta
+
+whitelist_path = os.path.join(os.path.expanduser("~"), "Project404", 'List.json')
+json_path = os.path.join(os.path.expanduser("~"), "Project404", 'data.json')
 
 # 바로가기 파일경로를 사용하여 대상 파일의 실제 경로 찾아 반환
 def get_target_path(lnk_path):
@@ -108,6 +110,39 @@ def sort_two_weeks():
     file_path = os.path.join(json_path, 'data.json')
     with open(file_path, 'w', encoding='utf-8') as json_file:
         json.dump(file_info, json_file, indent=4, ensure_ascii=False)
+    
+def whitelist_update():
+
+    # 화이트리스트가 없으면 생성.
+    if not os.path.exists(whitelist_path):
+        empty_json = {}
+        with open(whitelist_path, 'w') as json_file:
+            json.dump(empty_json, json_file, indent=2)
+            
+
+    # 2주간 열었던 파일 데이터 읽어오기 
+    with open (json_path,'r',encoding='utf-8') as u_json:
+        u_list = json.load(u_json)
+
+    # 화이트리스트 가져오기
+    with open(whitelist_path,'r',encoding= 'utf-8') as w_json:
+        w_list = json.load(w_json)
+
+    
+    for u_ext, u_prog in u_list.items():
+        if u_ext not in w_list:
+            w_list[u_ext] = u_prog
+        else:
+            # 이미 있는 키의 경우 중복된 값을 제외하고 추가
+            w_list[u_ext] = list(set(w_list[u_ext] + u_prog))
+
+
+
+    # 화이트리스트 저장
+    with open(whitelist_path, 'w', encoding='utf-8') as json_file:
+        json.dump(w_list, json_file, indent=4, ensure_ascii=False)
+
         
 if __name__ == "__main__":
     sort_two_weeks() 
+    whitelist_update()
