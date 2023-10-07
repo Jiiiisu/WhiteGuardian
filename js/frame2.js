@@ -1,58 +1,97 @@
 let selectedProgramTxt2;
 
-// List.json 파일의 경로
-const listJsonPath = "C://WRDP_MiniFilter//List.json";
+// 파일 관련
+const fs = require('fs');
+const path = require('path');
+const os = require('os');
 
-const txt = [];
-const doc = ["C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe", "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Word.exe"];
-const ppt = ["C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\PowerPoint.exe"];
-const none = [];
+// 화이트리스트 JSON 경로
+const filePath = path.join('json', 'List.json');
+
+// 자동화 경로와 맞춘 경로
+//const homeDir = os.homedir();
+//const filePath = path.join(homeDir, 'Project404', 'List.json'); // c:/사용자/사용자/Project404/List.json
+
+var none = [];
 
 // 확장자 종류에 맞는 아이콘과 프로그램 이름 모아두기
 var programData = {
     "extensionType": [".ppt", ".doc", ".txt", ".hwp", ".xlxs"],
-    
+
     ".ppt": {
-            "Name": "파워포인트",
-            "Icon": "./images/powerpoint.png"
-            },
+        "Name": "파워포인트",
+        "Icon": "./images/powerpoint.png"
+    },
     ".doc": {
-            "Name": "워드",
-            "Icon": "./images/word.png"
-            },
+        "Name": "워드",
+        "Icon": "./images/word.png"
+    },
     ".txt": {
-            "Name": "메모장",
-            "Icon": "./images/textFile.png"
-            },
-    ".hwp": {   
-            "Name": "한컴오피스",
-            "Icon": "./images/hwp.png"
-            },
+        "Name": "메모장",
+        "Icon": "./images/textFile.png"
+    },
+    ".hwp": {
+        "Name": "한컴오피스",
+        "Icon": "./images/hwp.png"
+    },
     ".xlxs": {
-            "Name": "엑셀",
-            "Icon": "./images/excel.png"
-            }
+        "Name": "엑셀",
+        "Icon": "./images/excel.png"
+    }
 }
 
-function inputExtension(){
+function inputExtension() {
     const openDialog = document.getElementById("addExtension");
     const enterButton = document.getElementById("enter");
     const cancelButton = document.getElementById("cancel");
     const extensionText = document.getElementById("extensionText");
 
     openDialog.show();
-    
+
     enterButton.addEventListener("click", () => {
         var extension = extensionText.value;
-        if(extension != null && extension != ""){
-            if(programData.extensionType.indexOf(extension) !== -1){
+        if (extension != null && extension != "") {
+            if (programData.extensionType.indexOf(extension) !== -1) {
                 createSmallFrame(extension);
                 extensionText.value = "";
                 openDialog.close();
-            }  
-            else{
+
+                // 화이트리스트 JSON 파일 읽기
+                fs.readFile(filePath, 'utf8', (err, data) => {
+                    if (err) {
+                        console.error('파일을 읽을 수 없습니다.', err);
+                        return;
+                    }
+
+                    try {
+                        // JSON 파싱
+                        const jsonData = JSON.parse(data);
+
+                        // 키가 화이트리스트 JSON에 없으면 추가
+                        if (!jsonData[extension]) {
+                            jsonData[extension] = [];
+
+                            // JSON 데이터를 문자열로 변환
+                            const updatedJson = JSON.stringify(jsonData, null, 2);
+
+                            // 파일 쓰기
+                            fs.writeFile(filePath, updatedJson, 'utf8', (err) => {
+                                if (err) {
+                                    console.error('파일을 쓸 수 없습니다.', err);
+                                    return;
+                                }
+
+                                console.log('키가 성공적으로 추가되었습니다.');
+                            });
+                        }
+                    } catch (parseError) {
+                        console.error('JSON 파싱 오류:', parseError);
+                    }
+                });
+
+            } else {
                 console.log("없어요");
-                extension =  null;
+                extension = null;
                 openDialog.close();
             }
         }
@@ -68,7 +107,7 @@ function inputExtension(){
 // + 버튼 눌렀을때 뜨는 프롬프트 상자
 // function inputExtension(){
 //     let ret = prompt("추가할 확장자명을 입력하세요.");
-    
+
 //     if(ret != null && ret != ""){
 //         if(programData.extensionType.indexOf(ret) !== -1){
 //             createSmallFrame(ret);
@@ -80,7 +119,7 @@ function inputExtension(){
 //     }
 // }
 
-function inputProgramPath(){
+function inputProgramPath() {
     const openDialog = document.getElementById("addProgram");
     const enterButton = document.getElementById("enter2");
     const cancelButton = document.getElementById("cancel2");
@@ -90,19 +129,45 @@ function inputProgramPath(){
 
     enterButton.addEventListener("click", () => {
         var program = ProgramText.value;
-        if(program != null && program != ""){
-            if (selectedProgramTxt2 == ".doc") {
-                doc.push(program);
-                createAccessList(doc);
-            }
-            else if (selectedProgramTxt2 == ".ppt") {
-                ppt.push(program);
-                createAccessList(ppt);
-            }
-            else if (selectedProgramTxt2 == ".txt") {
-                txt.push(program);
-                createAccessList(txt);
-            }
+        if (program != null && program != "") {
+            // 파일 읽기
+            fs.readFile(filePath, 'utf8', (err, data) => {
+                if (err) {
+                    console.error('파일을 읽을 수 없습니다.', err);
+                    return;
+                }
+
+                try {
+                    // JSON 파싱
+                    const jsonData = JSON.parse(data);
+
+                    // 값 추가
+                    if (jsonData[selectedProgramTxt2]) {
+                        jsonData[selectedProgramTxt2].push(program);
+                    } else {
+                        jsonData[selectedProgramTxt2] = [program];
+                    }
+
+                    // JSON 데이터를 문자열로 변환
+                    const updatedJson = JSON.stringify(jsonData, null, 2);
+
+                    // 파일 쓰기
+                    fs.writeFile(filePath, updatedJson, 'utf8', (err) => {
+                        if (err) {
+                            console.error('파일을 쓸 수 없습니다.', err);
+                            return;
+                        }
+
+                        console.log('파일이 성공적으로 업데이트되었습니다.');
+                    });
+
+                    createAccessList(jsonData[selectedProgramTxt2]);
+
+                } catch (parseError) {
+                    console.error('JSON 파싱 오류:', parseError);
+                }
+            });
+
             ProgramText.value = "";
             openDialog.close();
         }
@@ -116,7 +181,7 @@ function inputProgramPath(){
 // + 버튼 눌렀을때 뜨는 프롬프트 상자 - 접근 허용 목록
 // function inputProgramPath(){
 //     let newData = prompt("허용할 프로그램의 경로를 입력하세요.");
-    
+
 //     if(newData != null && newData != ""){
 //         fetch(listJsonPath)
 //         .then(response => response.json())
@@ -141,10 +206,10 @@ function inputProgramPath(){
 
 
 // 프로그램 목록(확장자 목록)에 요소 하나 추가
-function createSmallFrame(name){
+function createSmallFrame(name) {
     var newDiv = document.createElement("div");
     newDiv.setAttribute("class", "program-small-frame");
-    
+
     // 확장자 종류에 맞는 프로그램 이름과, 아이콘 가져오기
     var programName = programData[name].Name;
     var programIcon = programData[name].Icon;
@@ -166,12 +231,12 @@ function createSmallFrame(name){
     newDiv.appendChild(img);
 
     var txt = document.createElement("div");
-    txt.setAttribute("class","programTxt");
+    txt.setAttribute("class", "programTxt");
     txt.innerHTML = programName
     smallGroup.appendChild(txt);
 
     var txt2 = document.createElement("div");
-    txt2.setAttribute("class","programTxt2");
+    txt2.setAttribute("class", "programTxt2");
     txt2.innerHTML = name;
     smallGroup.appendChild(txt2);
 
@@ -198,120 +263,73 @@ function programClick(obj){
 
 // 프로그램 목록 클릭 시 호출되는 함수
 function programClick(obj) {
-    var allClass = document.getElementsByClassName("small-group on");
-    let count = allClass.length;
+    // 화이트리스트 JSON 읽기
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('파일을 읽을 수 없습니다.', err);
+            return;
+        }
 
-    let openList = document.getElementById("totalframe2");
-    for (let i = 0; i < count; i++) {
-        allClass[i].classList.remove("on");
-        openList.style.display = "none";
-    }
+        var allClass = document.getElementsByClassName("small-group on");
+        let count = allClass.length;
 
-    obj.classList.add("on");
-    
-    // JSON 파일을 불러와서 접근 허용 목록을 생성
-    /*
-    fetch(listJsonPath)
-        .then(response => response.json())
-        .then(data => {
-            createAccessList(data.Accept);
-        })
-        .catch(error => {
-            console.error('Error loading List.json:', error);
-        });
+        let openList = document.getElementById("totalframe2");
+        for (let i = 0; i < count; i++) {
+            allClass[i].classList.remove("on");
+            openList.style.display = "none";
+        }
 
-    openList.style.display = "inline-flex";
-    */
+        obj.classList.add("on");
 
-    // 클릭한 요소의 programTxt2 값을 읽어옴
-    selectedProgramTxt2 = obj.querySelector(".programTxt2").textContent;
+        // 클릭한 요소의 programTxt2 값을 읽어옴
+        selectedProgramTxt2 = obj.querySelector(".programTxt2").textContent;
 
-    if (selectedProgramTxt2 == ".doc") {
-        createAccessList(doc);
-        // Delete 버튼 클릭 이벤트 핸들링
+        const jsonData = JSON.parse(data);
+
+        if (jsonData[selectedProgramTxt2]) {
+            createAccessList(jsonData[selectedProgramTxt2]);
+        }
+
         const deleteButtons = document.querySelectorAll('.deleteIcon');
         deleteButtons.forEach((deleteButton, index) => {
             deleteButton.addEventListener('click', () => {
-                // 해당 목록 삭제
-                doc.splice(index, 1);
-                            
+                // 화이트리스트에서 해당 목록 삭제
+                jsonData[selectedProgramTxt2].splice(index, 1);
+
                 // 화면에서 해당 목록 삭제
                 const listFrame = deleteButton.closest('.listBlockFrame');
                 listFrame.remove();
-            })
-        });
-    }
-    else if (selectedProgramTxt2 == ".ppt") {
-        createAccessList(ppt);
-        // Delete 버튼 클릭 이벤트 핸들링
-        const deleteButtons = document.querySelectorAll('.deleteIcon');
-        deleteButtons.forEach((deleteButton, index) => {
-            deleteButton.addEventListener('click', () => {
-                // 해당 목록 삭제
-                ppt.splice(index, 1);
-                            
-                // 화면에서 해당 목록 삭제
-                const listFrame = deleteButton.closest('.listBlockFrame');
-                listFrame.remove();
-            })
-        });
-    }
-    else if (selectedProgramTxt2 == ".txt") {
-        createAccessList(txt);
-        // Delete 버튼 클릭 이벤트 핸들링
-        const deleteButtons = document.querySelectorAll('.deleteIcon');
-        deleteButtons.forEach((deleteButton, index) => {
-            deleteButton.addEventListener('click', () => {
-                // 해당 목록 삭제
-                txt.splice(index, 1);
-                            
-                // 화면에서 해당 목록 삭제
-                const listFrame = deleteButton.closest('.listBlockFrame');
-                listFrame.remove();
-            })
-        });
-    }
-    else createAccessList(none);
 
-    /*
-    // JSON 파일을 불러와서 programTxt2 값을 키로 사용하여 데이터 찾기
-    fetch(listJsonPath)
-        .then(response => response.json())
-        .then(data => {
-            createAccessList(data[selectedProgramTxt2]);
+                // JSON 데이터를 문자열로 변환
+                const updatedJson = JSON.stringify(jsonData, null, 2);
 
-            // Delete 버튼 클릭 이벤트 핸들링
-            const deleteButtons = document.querySelectorAll('.deleteIcon');
-            deleteButtons.forEach((deleteButton, index) => {
-                deleteButton.addEventListener('click', () => {
-                    // 해당 목록 삭제
-                    data[selectedProgramTxt2].splice(index, 1);
-                    
-                    // 화면에서 해당 목록 삭제
-                    const listFrame = deleteButton.closest('.listBlockFrame');
-                    listFrame.remove();
+                // 파일 쓰기
+                fs.writeFile(filePath, updatedJson, 'utf8', (err) => {
+                    if (err) {
+                        console.error('파일을 쓸 수 없습니다.', err);
+                        return;
+                    }
 
-                    // JSON 데이터 업데이트 코드 필요 !!
+                    console.log('값이 성공적으로 제거되었습니다.');
                 });
             });
-        })
-        .catch(error => {
-            console.error('[programClick] load json fail: ', error);
         });
-        */
 
-    openList.style.display = "inline-flex";
+        openList.style.display = "inline-flex";
+
+    });
+
 }
 
 // 접근 허용 목록을 생성하는 함수
 function createAccessList(acceptList) {
     const accessListContainer = document.getElementById('access-list-container');
-    
+
     // 이전 목록 삭제
     while (accessListContainer.firstChild) {
         accessListContainer.removeChild(accessListContainer.firstChild);
     }
-    
+
     // Accept 배열을 순회하면서 목록을 생성
     acceptList.forEach(filePath => {
         // 파일 경로에서 마지막 "\\"까지의 부분 추출
@@ -340,14 +358,14 @@ function createAccessList(acceptList) {
 
         listBlockFrame.appendChild(exeNameFrame);
         listBlockFrame.appendChild(deleteIcon);
-    
+
         accessListContainer.appendChild(listBlockFrame);
 
     });
 }
 
 // 프로그램 목록 X 버튼 누르면 삭제하기
-function deleteProgram(e){
+function deleteProgram(e) {
     let openList = document.getElementById("totalframe2");
     openList.style.display = "none";
 
@@ -357,24 +375,23 @@ function deleteProgram(e){
 }
 
 // 드라이버 스타트 버튼
-function start(obj){
-    if(obj.innerHTML == "START"){
+function start(obj) {
+    if (obj.innerHTML == "START") {
         obj.innerHTML = "STOP";
         Drv = window.open("Dev://"); // 사전 세팅 안 하면 실행 안 됨 !!
         Drv.close();
-    }
-    else{
+    } else {
         obj.innerHTML = "START";
     }
 }
 
 // 설명서 
-function open_instruction(){
+function open_instruction() {
     let count = 1;
 
     let instruction = document.getElementById("instruction-board");
     instruction.style.display = "block";
-    
+
     let closeButton = document.getElementById("close_instruction");
     let backButton = document.getElementById("back-instruction");
     let nextButton = document.getElementById("next-instruction");
@@ -382,29 +399,29 @@ function open_instruction(){
     updateInstruction(count);
 
     backButton.addEventListener("click",
-        function(){ 
-            if(count > 1){
+        function () {
+            if (count > 1) {
                 count--;
-            }
-            else{
+            } else {
                 count = 1;
             }
             updateInstruction(count);
         });
-    
+
     nextButton.addEventListener("click",
-        function(){ 
-            if(count < 4){
+        function () {
+            if (count < 4) {
                 count++;
-            }
-            else{
+            } else {
                 count = 4;
             }
             updateInstruction(count);
-    });
-    
+        });
+
     closeButton.addEventListener("click",
-                                function(){ instruction.style.display = "none"; });
+        function () {
+            instruction.style.display = "none";
+        });
 }
 
 function updateInstruction(count) {
