@@ -385,6 +385,17 @@ function start(obj) {
     }
 }
 
+function w_update(obj) {
+    if (obj.innerHTML == "화이트리스트 업데이트") {
+        obj.innerHTML = "업데이트 중";
+        wlist = window.open("wlist://");
+
+        setTimeout(function () {
+            obj.innerHTML = "화이트리스트 업데이트";
+        }, 500); 
+        wlist.close();
+    }
+}
 // 설명서 
 function open_instruction() {
     let count = 1;
