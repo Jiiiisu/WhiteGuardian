@@ -263,10 +263,13 @@ function programClick(obj){
 
 // 프로그램 목록 클릭 시 호출되는 함수
 function programClick(obj) {
+    var notice = document.querySelector('.notice');
+
     // 화이트리스트 JSON 읽기
     fs.readFile(filePath, 'utf8', (err, data) => {
         if (err) {
             console.error('파일을 읽을 수 없습니다.', err);
+            notice.textContent = 'JSON 파일을 읽을 수 없습니다';
             return;
         }
 
@@ -371,6 +374,37 @@ function deleteProgram(e) {
 
     var clickElement = e.target;
     var smallFrame = clickElement.parentElement;
+
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+          console.error('파일을 읽을 수 없습니다.', err);
+          return;
+        }
+      
+        try {
+          // JSON 파싱
+          const jsonData = JSON.parse(data);
+      
+          // 키 삭제
+          delete jsonData[selectedProgramTxt2];
+      
+          // JSON 데이터를 문자열로 변환
+          const updatedJson = JSON.stringify(jsonData, null, 2);
+      
+          // 파일 쓰기
+          fs.writeFile(filePath, updatedJson, 'utf8', (err) => {
+            if (err) {
+              console.error('파일을 쓸 수 없습니다.', err);
+              return;
+            }
+      
+            console.log('키가 성공적으로 제거되었습니다.');
+          });
+        } catch (parseError) {
+          console.error('JSON 파싱 오류:', parseError);
+        }
+    });
+
     smallFrame.remove();
 }
 
@@ -392,7 +426,7 @@ function w_update(obj) {
 
         setTimeout(function () {
             obj.innerHTML = "화이트리스트 업데이트";
-        }, 500); 
+        }, 500);
         wlist.close();
     }
 }
